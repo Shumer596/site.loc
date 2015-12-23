@@ -23,7 +23,8 @@ class m151223_120647_create_user_table extends Migration
             'number' => 'string(20) NOT NULL',
             'site' => 'string NULL',
             'skype' => 'varchar(100) NULL',
-
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ]);
     }
 
