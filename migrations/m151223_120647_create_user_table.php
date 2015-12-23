@@ -20,7 +20,7 @@ class m151223_120647_create_user_table extends Migration
             'lastName' => 'string NULL',
             'email' => 'varchar(100)',
             'password' => 'varchar(100) NOT NULL',
-            'number' => 'int(12) NOT NULL',
+            'number' => 'string(20) NOT NULL',
             'site' => 'string NULL',
             'skype' => 'varchar(100) NULL',
 
