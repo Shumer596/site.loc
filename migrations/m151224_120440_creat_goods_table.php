@@ -1,0 +1,57 @@
+<?php
+
+use yii\db\Schema;
+use yii\db\Migration;
+
+class m151224_120440_creat_goods_table extends Migration
+{
+    /**
+     *
+     */
+    public function up()
+    {
+        $this->createTable('goods', [
+            'goodsId' => 'pk',
+            'charge_city' => 'string NOT NULL',
+            'discharge_city' => 'string NOT NULL',
+            'name' => 'string NOT NULL',
+            'tare' => 'string NOT NULL',
+            'goods_weight' => 'DOUBLE(3,3) NOT NULL',
+            'goods_size' => 'DOUBLE(3,3) NOT NULL',
+            'carcase' => 'string NOT NULL',
+            'carcase_charge' => 'string NOT NULL',
+            'capacity' => 'DOUBLE(3,3) NOT NULL',
+            'size' => 'DOUBLE(3,3) NOT NULL',
+            'work_preferences' => 'string NULL',
+            'status_charge' => 'string NOT NULL',
+            'charge_start' => 'date',
+            'charge_end' => 'date',
+            'city_rate' => 'DOUBLE(19,4) NULL',
+            'intercity_rate' => 'DOUBLE(19,4) NULL',
+            'passage_rate' => 'DOUBLE(19,4) NULL',
+            'info' => 'text NULL',
+            'term' => 'int(2) NOT NULL',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'userId' => 'int(11)',
+        ]);
+
+        $this->addForeignKey('Goods_user_id', 'goods', 'userId', 'user', 'userId');
+    }
+
+    public function down()
+    {
+        $this->dropTable('goods');
+    }
+
+    /*
+    // Use safeUp/safeDown to run migration code within a transaction
+    public function safeUp()
+    {
+    }
+
+    public function safeDown()
+    {
+    }
+    */
+}
