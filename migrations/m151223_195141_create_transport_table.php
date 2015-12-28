@@ -8,7 +8,7 @@ class m151223_195141_create_transport_table extends Migration
     public function up()
     {
         $this->createTable('transport', [
-            'transportId' => 'pk',
+            'transport_id' => 'pk',
             'charge_city' => 'string NOT NULL',
             'discharge_city' => 'string NOT NULL',
             'carcase' => 'string NOT NULL',
@@ -26,10 +26,10 @@ class m151223_195141_create_transport_table extends Migration
             'term' => 'int(2) NOT NULL',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
-            'userId' => 'int(11)',
+            'user_id' => 'int(11)',
         ]);
 
-        $this->addForeignKey('Transport_user_id', 'transport', 'userId', 'user', 'userId');
+        $this->addForeignKey('Transport_user_id', 'transport', 'user_id', 'user', 'user_id');
     }
 
     public function down()

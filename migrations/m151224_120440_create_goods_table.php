@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m151224_120440_creat_goods_table extends Migration
+class m151224_120440_create_goods_table extends Migration
 {
     /**
      *
@@ -11,7 +11,7 @@ class m151224_120440_creat_goods_table extends Migration
     public function up()
     {
         $this->createTable('goods', [
-            'goodsId' => 'pk',
+            'goods_id' => 'pk',
             'charge_city' => 'string NOT NULL',
             'discharge_city' => 'string NOT NULL',
             'name' => 'string NOT NULL',
@@ -33,10 +33,10 @@ class m151224_120440_creat_goods_table extends Migration
             'term' => 'int(2) NOT NULL',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
-            'userId' => 'int(11)',
+            'user_id' => 'int(11)',
         ]);
 
-        $this->addForeignKey('Goods_user_id', 'goods', 'userId', 'user', 'userId');
+        $this->addForeignKey('Goods_user_id', 'goods', 'user_id', 'user', 'user_id');
     }
 
     public function down()

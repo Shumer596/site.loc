@@ -8,7 +8,7 @@ class m151223_120647_create_user_table extends Migration
     public function up()
     {
         $this->createTable('user', [
-            'userId' => 'pk',
+            'user_id' => 'pk',
             'condition' => 'string NOT NULL', //физ или юр лицо
             'city' => 'string NOT NULL',      //город
             'activity' => 'string NOT NULL',  //деятельность

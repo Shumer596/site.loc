@@ -8,7 +8,7 @@ class m151223_192954_create_tender_table extends Migration
     public function up()
     {
         $this->createTable('tender', [
-            'tenderId' => 'pk',
+            'tender_id' => 'pk',
             'name' => 'string NOT NULL',
             'info' => 'text NOT NULL',
             'file' => 'text NOT NULL',
@@ -17,10 +17,10 @@ class m151223_192954_create_tender_table extends Migration
             'price' => 'DOUBLE(19,4)',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
-            'userId' => 'int(11)',
+            'user_id' => 'int(11)',
         ]);
 
-        $this->addForeignKey('Tender_user_id', 'tender', 'userId', 'user', 'userId');
+        $this->addForeignKey('Tender_user_id', 'tender', 'user_id', 'user', 'user_id');
     }
 
     public function down()
