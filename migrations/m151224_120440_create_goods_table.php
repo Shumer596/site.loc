@@ -44,14 +44,4 @@ class m151224_120440_create_goods_table extends Migration
         $this->dropTable('goods');
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
