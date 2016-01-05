@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "user".
  *
@@ -35,6 +36,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    const PERSON = 'Person';
+    const COMPANY = 'Company';
+
     /**
      * @inheritdoc
      */
@@ -98,11 +102,11 @@ class User extends ActiveRecord implements IdentityInterface
         return Yii::$app->security->validatePassword($password, $this->$password);
     }
 
-    public function  behaviors()
+    public function behaviors()
     {
-      return [
-          TimestampBehavior::className(),
-      ];
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**

@@ -8,10 +8,9 @@ use yii\base\Model;
 /**
  * RegForm is the model behind the login form.
  */
-class RegForm extends Model
+class RegistrationForm extends Model
 {
     public $status;
-
 
     /**
      * @return array the validation rules.
@@ -38,7 +37,7 @@ class RegForm extends Model
     {
         return [
             'user_id' => Yii::t('app', 'User ID'),
-            'status' => Yii::t('app', ''),
+            'status' => Yii::t('app', 'Status'),
             'city' => Yii::t('app', 'City'),
             'activity' => Yii::t('app', 'Activity'),
             'company' => Yii::t('app', 'Company'),
