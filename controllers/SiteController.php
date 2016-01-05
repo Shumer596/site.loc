@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\RegForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -91,4 +92,14 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionReg()
+    {
+        $model = new RegForm();
+
+        return $this->render('reg', [
+            'model' => $model,
+        ]);
+    }
+
 }
