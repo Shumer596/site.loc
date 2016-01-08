@@ -26,15 +26,20 @@ class RegistrationForm extends Model
     public $skype;
     public $authKey;
     public $token;
-
+    public $type_ownership;
     /**
      * @return array the validation rules.
      */
     public function rules()
     {
         return [
-            [['status'], 'required'],
-
+            [['status', 'city', 'activity', 'company', 'type_ownership', 'INN', 'address', 'firstName', 'surName', 'email', 'password', 'number'], 'required'],
+            [['INN'], 'integer'],
+            [['address'], 'string'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['status', 'city', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site', 'authKey', 'token'], 'string', 'max' => 255],
+            [['email', 'password', 'skype'], 'string', 'max' => 100],
+            [['number'], 'string', 'max' => 20]
         ];
     }
 
@@ -56,6 +61,7 @@ class RegistrationForm extends Model
             'city' => Yii::t('app', 'City'),
             'activity' => Yii::t('app', 'Activity'),
             'company' => Yii::t('app', 'Company'),
+            'type_ownership' => Yii::t('app', 'Type Ownership'),
             'INN' => Yii::t('app', 'Inn'),
             'address' => Yii::t('app', 'Address'),
             'firstName' => Yii::t('app', 'First Name'),
@@ -66,10 +72,6 @@ class RegistrationForm extends Model
             'number' => Yii::t('app', 'Number'),
             'site' => Yii::t('app', 'Site'),
             'skype' => Yii::t('app', 'Skype'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'authKey' => Yii::t('app', 'Auth Key'),
-            'token' => Yii::t('app', 'Token'),
         ];
     }
 

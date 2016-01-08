@@ -65,7 +65,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['status', 'city', 'activity', 'company', 'type_ownership', 'INN', 'address', 'firstName', 'surName', 'email', 'password', 'number'], 'required'],
+            [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_PERSON],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required','on' => self::SCENARIO_COMPANY],
             [['INN'], 'integer'],
             [['address'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
