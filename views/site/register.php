@@ -16,20 +16,20 @@ use app\models\User;
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
-    <?= $form->field($model, 'city') ?>
     <?= $form->field($model, 'activity') ?>
+    <?= $form->field($model, 'city') ?>
+    <?= $form->field($model, 'surName') ?>
+    <?= $form->field($model, 'firstName') ?>
+    <?= $form->field($model, 'lastName') ?>
+    <?= $form->field($model, 'number') ?>
+    <?= $form->field($model, 'skype') ?>
+    <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'company') ?>
     <?= $form->field($model, 'type_ownership') ?>
     <?= $form->field($model, 'INN') ?>
     <?= $form->field($model, 'address') ?>
-    <?= $form->field($model, 'firstName') ?>
-    <?= $form->field($model, 'surName') ?>
-    <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'password') ?>
-    <?= $form->field($model, 'number') ?>
-    <?= $form->field($model, 'lastName') ?>
     <?= $form->field($model, 'site') ?>
-    <?= $form->field($model, 'skype') ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>

@@ -64,11 +64,16 @@ class RegistrationForm extends Model
             } elseif (User::SCENARIO_COMPANY == $this->status) {
                 $user->setScenario(User::SCENARIO_COMPANY);
                 $user->activity = $this->activity;
+                $user->company = $this->company;
+                $user->type_ownership = $this->type_ownership;
+                $user->INN = $this->INN;
                 $user->city = $this->city;
+                $user->address = $this->address;
                 $user->surName = $this->surName;
                 $user->firstName = $this->firstName;
                 $user->lastName = $this->lastName;
                 $user->number = $this->number;
+                $user->site = $this->site;
                 $user->skype = $this->skype;
                 $user->email = $this->email;
                 $user->setPassword($this->password);
@@ -81,30 +86,28 @@ class RegistrationForm extends Model
         }
     }
 
-return false;
-}
 
-public
-function attributeLabels()
-{
-    return [
-        'user_id' => Yii::t('app', 'User ID'),
-        'status' => Yii::t('app', 'Status'),
-        'city' => Yii::t('app', 'City'),
-        'activity' => Yii::t('app', 'Activity'),
-        'company' => Yii::t('app', 'Company'),
-        'type_ownership' => Yii::t('app', 'Type Ownership'),
-        'INN' => Yii::t('app', 'Inn'),
-        'address' => Yii::t('app', 'Address'),
-        'firstName' => Yii::t('app', 'First Name'),
-        'surName' => Yii::t('app', 'Sur Name'),
-        'lastName' => Yii::t('app', 'Last Name'),
-        'email' => Yii::t('app', 'Email'),
-        'password' => Yii::t('app', 'Password'),
-        'number' => Yii::t('app', 'Number'),
-        'site' => Yii::t('app', 'Site'),
-        'skype' => Yii::t('app', 'Skype'),
-    ];
-}
+    public
+    function attributeLabels()
+    {
+        return [
+            'user_id' => Yii::t('app', 'User ID'),
+            'status' => Yii::t('app', 'Status'),
+            'city' => Yii::t('app', 'City'),
+            'activity' => Yii::t('app', 'Activity'),
+            'company' => Yii::t('app', 'Company'),
+            'type_ownership' => Yii::t('app', 'Type Ownership'),
+            'INN' => Yii::t('app', 'Inn'),
+            'address' => Yii::t('app', 'Address'),
+            'firstName' => Yii::t('app', 'First Name'),
+            'surName' => Yii::t('app', 'Sur Name'),
+            'lastName' => Yii::t('app', 'Last Name'),
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
+            'number' => Yii::t('app', 'Number'),
+            'site' => Yii::t('app', 'Site'),
+            'skype' => Yii::t('app', 'Skype'),
+        ];
+    }
 
 }
