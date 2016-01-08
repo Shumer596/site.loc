@@ -11,6 +11,21 @@ use yii\base\Model;
 class RegistrationForm extends Model
 {
     public $status;
+    public $city;
+    public $activity;
+    public $company;
+    public $INN;
+    public $address;
+    public $firstName;
+    public $surName;
+    public $lastName;
+    public $email;
+    public $password;
+    public $number;
+    public $site;
+    public $skype;
+    public $authKey;
+    public $token;
 
     /**
      * @return array the validation rules.

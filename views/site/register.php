@@ -13,8 +13,8 @@ use app\models\User;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-        User::PERSON => Yii::t('app', 'Individual'),
-        User::COMPANY => Yii::t('app', 'Legal entity'),
+        User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
+        User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
 
     <div class="form-group">

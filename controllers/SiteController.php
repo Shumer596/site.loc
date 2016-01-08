@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\helpers\VarDumper;
 
 class SiteController extends Controller
 {
@@ -95,6 +96,10 @@ class SiteController extends Controller
 
     public function actionRegister()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new RegistrationForm();
 
         if ($model->load(Yii::$app->request->post())) {

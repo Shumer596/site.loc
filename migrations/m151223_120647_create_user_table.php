@@ -13,12 +13,13 @@ class m151223_120647_create_user_table extends Migration
             'city' => 'string NOT NULL',      //город
             'activity' => 'string NOT NULL',  //деятельность
             'company' => 'string NOT NULL',   //название компании
+            'type_ownership' => 'string NOT NULL',   //форма собственности
             'INN' => 'int(16) NOT NULL',   //ИНН
             'address' => 'text NOT NULL',
             'firstName' => 'string NOT NULL',
             'surName' => 'string NOT NULL',
             'lastName' => 'string NULL',
-            'email' => 'varchar(100)',
+            'email' => 'varchar(100) NOT NULL',
             'password' => 'varchar(100) NOT NULL',
             'number' => 'string(20) NOT NULL',
             'site' => 'string NULL',
