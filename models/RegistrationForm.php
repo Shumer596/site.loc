@@ -37,13 +37,16 @@ class RegistrationForm extends Model
             [['address'], 'string'],
             [['status', 'city', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
             [['email'], 'unique', 'targetClass' => 'app\models\User'],
-            [['company'], 'unique', 'targetClass' => 'app\models\User'],
-            [['INN'], 'unique', 'targetClass' => 'app\models\User'],
+//            [['company'], 'unique', 'targetClass' => 'app\models\User'],
+//            [['INN'], 'unique', 'targetClass' => 'app\models\User'],
             [['email', 'password', 'skype'], 'string', 'max' => 100],
             [['number'], 'string', 'max' => 20]
         ];
     }
 
+    /**
+     * @return bool
+     */
     public function register()
     {
         if ($this->validate()) {
@@ -80,10 +83,9 @@ class RegistrationForm extends Model
             } else {
                 return false;
             }
-
             return $user->save();
-
         }
+        return false;
     }
 
 

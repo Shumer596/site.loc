@@ -24,12 +24,7 @@ use app\models\User;
     <?= $form->field($model, 'number') ?>
     <?= $form->field($model, 'skype') ?>
     <?= $form->field($model, 'email') ?>
-    <?= $form->field($model, 'company') ?>
-    <?= $form->field($model, 'type_ownership') ?>
-    <?= $form->field($model, 'INN') ?>
-    <?= $form->field($model, 'address') ?>
     <?= $form->field($model, 'password') ?>
-    <?= $form->field($model, 'site') ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
