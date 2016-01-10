@@ -103,9 +103,8 @@ class SiteController extends Controller
         $model = new RegistrationForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->register()) {
-            return $this->render('reg-success',[
-                'model'=>$model,
-            ]);
+            Yii::$app->session->setFlash('success', 'Регистрация прошла успешно');
+            return $this->refresh();
         } else {
             Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации');
             Yii::error('Ошибка при регистрации');
