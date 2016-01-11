@@ -15,8 +15,8 @@ class m151223_192954_create_tender_table extends Migration
             'date_start' => 'date',
             'date_end' => 'date',
             'price' => 'DOUBLE(19,4)',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
             'user_id' => 'int(11)',
         ]);
 

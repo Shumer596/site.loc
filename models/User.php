@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\web\IdentityInterface;
 use yii\behaviors\TimestampBehavior;
 
@@ -66,7 +67,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_PERSON],
-            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required','on' => self::SCENARIO_COMPANY],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_COMPANY],
             [['INN'], 'integer'],
             [['address'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
@@ -120,7 +121,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ]
         ];
     }
 

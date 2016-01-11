@@ -24,8 +24,8 @@ class m151223_195141_create_transport_table extends Migration
             'passage_rate' => 'DOUBLE(19,4) NULL',
             'info' => 'text NULL',
             'term' => 'int(2) NOT NULL',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
             'user_id' => 'int(11)',
         ]);
 

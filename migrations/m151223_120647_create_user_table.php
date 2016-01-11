@@ -24,8 +24,8 @@ class m151223_120647_create_user_table extends Migration
             'number' => 'string(20) NOT NULL',
             'site' => 'string NULL',
             'skype' => 'varchar(100) NULL',
-            'created_at' => 'int',
-            'updated_at' => 'int',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
             'authKey' =>Schema::TYPE_STRING,
             'token' =>Schema::TYPE_STRING,
         ]);

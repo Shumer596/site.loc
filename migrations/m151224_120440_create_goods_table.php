@@ -31,8 +31,8 @@ class m151224_120440_create_goods_table extends Migration
             'passage_rate' => 'DOUBLE(19,4) NULL',
             'info' => 'text NULL',
             'term' => 'int(2) NOT NULL',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
             'user_id' => 'int(11)',
         ]);
 
