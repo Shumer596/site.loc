@@ -3,6 +3,8 @@
 use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\AutoComplete;
+use app\models\City;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
@@ -25,7 +27,17 @@ use yii\widgets\ActiveForm;
             '5' => Yii::t('app', 'Shipper-carrier'),
             '6' => Yii::t('app', 'Insurance agent'),
         ], ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'city') ?></div>
+    <div class="show1 show2"><?= $form->field($model, 'city')->widget(
+            AutoComplete::className(), [
+            'clientOptions' => [
+                'source' =>City::find()->select(['city.region_id, city.name, region.name FROM city, region WHERE city.city_id = region.region_id'])->asArray()->all(),
+            ],
+            'options' => [
+                'class' => 'form-control'
+            ]
+        ]); ?>
+    </div>
+
     <div class="show1 show2"><?= $form->field($model, 'surName') ?></div>
     <div class="show1 show2"><?= $form->field($model, 'firstName') ?></div>
     <div class="show1 show2"><?= $form->field($model, 'lastName') ?></div>
@@ -47,7 +59,7 @@ use yii\widgets\ActiveForm;
             '7' => Yii::t('app', 'IC'),
             '8' => Yii::t('app', 'LP'),
         ], ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'site')->textInput(['value'=>'http://'])?></div>
+    <div class="show2 hide2"><?= $form->field($model, 'site')->textInput(['value' => 'http://']) ?></div>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
