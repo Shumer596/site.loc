@@ -18,7 +18,9 @@ use app\models\City;
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
-    <div class="show1 show2"> <?= $form->field($model, 'activity')->dropDownList([
+    <?php ActiveForm::end(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
+    <div> <?= $form->field($model, 'activity')->dropDownList([
             User::CARRIER => Yii::t('app', 'Carrier'),
             User::FORWARDER => Yii::t('app', 'Forwarder'),
             User::SNIPER => Yii::t('app', 'Shipper'),
@@ -27,12 +29,11 @@ use app\models\City;
             User::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier'),
             User::INSURANCE_AGENT => Yii::t('app', 'Insurance agent'),
         ], ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'city')->widget(
+    <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
             'clientOptions' => [
                 'source' => City::find()
-                    ->select(['CONCAT(\'some text\',name) as label'])
-//                    ->select(['city_id as value', 'name as label'])
+                    ->select(['city_id as value', 'CONCAT(name,\', \', region_id ) as label'])
                     ->asArray()
                     ->all(),
             ],
@@ -43,17 +44,19 @@ use app\models\City;
         ]); ?>
     </div>
 
-    <div class="show1 show2"><?= $form->field($model, 'surName') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'firstName') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'lastName') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'number') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'email') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'skype') ?></div>
-    <div class="show1 show2"><?= $form->field($model, 'password') ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'INN') ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'address') ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'company') ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'type_ownership')->dropDownList([
+    <div><?= $form->field($model, 'surName') ?></div>
+    <div><?= $form->field($model, 'firstName') ?></div>
+    <div><?= $form->field($model, 'lastName') ?></div>
+    <div><?= $form->field($model, 'number') ?></div>
+    <div><?= $form->field($model, 'skype') ?></div>
+    <div><?= $form->field($model, 'email') ?></div>
+    <div><?= $form->field($model, 'password') ?></div>
+    <?php ActiveForm::end(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'Legal_form']); ?>
+    <div class="show2"><?= $form->field($model, 'INN') ?></div>
+    <div class="show2"><?= $form->field($model, 'address') ?></div>
+    <div class="show2"><?= $form->field($model, 'company') ?></div>
+    <div class="show2"><?= $form->field($model, 'type_ownership')->dropDownList([
             User::PLC => Yii::t('app', 'PLC'),
             User::LTD => Yii::t('app', 'Ltd'),
             User::INC => Yii::t('app', 'Inc.'),
@@ -69,6 +72,6 @@ use app\models\City;
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
-    <?php ActiveForm::end(); ?>
+
 
 </div><!-- site-register -->
