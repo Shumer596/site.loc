@@ -41,6 +41,24 @@ class User extends ActiveRecord implements IdentityInterface
     const SCENARIO_PERSON = 'Person';
     const SCENARIO_COMPANY = 'Company';
 
+    const CARRIER = 'Carrier';
+    const FORWARDER = 'Forwarder';
+    const SNIPER = 'Shipper';
+    const DISPATCHER = 'Dispatcher';
+    const FORWARDER_CARRIER = 'Forwarder-carrier';
+    const SNIPER_CARRIER = 'Shipper-carrier';
+    const INSURANCE_AGENT = 'Insurance agent';
+
+    const PLC = 'PLC';
+    const LTD = 'Ltd';
+    const INC = 'Inc.';
+    const CORP = 'Corp.';
+    const LLC = 'LLC';
+    const LDC = 'LDC';
+    const IBC = 'IBC';
+    const LP = 'LP';
+    const IC = 'IC';
+
 
     public function scenarios()
     {

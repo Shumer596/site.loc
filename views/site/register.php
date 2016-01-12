@@ -19,18 +19,21 @@ use app\models\City;
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
     <div class="show1 show2"> <?= $form->field($model, 'activity')->dropDownList([
-            '0' => Yii::t('app', 'Carrier'),
-            '1' => Yii::t('app', 'Forwarder'),
-            '2' => Yii::t('app', 'Shipper'),
-            '3' => Yii::t('app', 'Dispatcher'),
-            '4' => Yii::t('app', 'Forwarder-carrier'),
-            '5' => Yii::t('app', 'Shipper-carrier'),
-            '6' => Yii::t('app', 'Insurance agent'),
+            User::CARRIER => Yii::t('app', 'Carrier'),
+            User::FORWARDER => Yii::t('app', 'Forwarder'),
+            User::SNIPER => Yii::t('app', 'Shipper'),
+            User::DISPATCHER => Yii::t('app', 'Dispatcher'),
+            User::FORWARDER_CARRIER => Yii::t('app', 'Forwarder-carrier'),
+            User::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier'),
+            User::INSURANCE_AGENT => Yii::t('app', 'Insurance agent'),
         ], ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div class="show1 show2"><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
             'clientOptions' => [
-                'source' =>City::find()->select(['city.region_id, city.name, region.name FROM city, region WHERE city.city_id = region.region_id'])->asArray()->all(),
+                'source' => City::find()
+                    ->select(['name as label'])
+                    ->asArray()
+                    ->all(),
             ],
             'options' => [
                 'class' => 'form-control'
@@ -49,15 +52,15 @@ use app\models\City;
     <div class="show2 hide2"><?= $form->field($model, 'address') ?></div>
     <div class="show2 hide2"><?= $form->field($model, 'company') ?></div>
     <div class="show2 hide2"><?= $form->field($model, 'type_ownership')->dropDownList([
-            '0' => Yii::t('app', 'PLC'),
-            '1' => Yii::t('app', 'Ltd'),
-            '2' => Yii::t('app', 'Inc.'),
-            '3' => Yii::t('app', 'Corp.'),
-            '4' => Yii::t('app', 'LLC'),
-            '5' => Yii::t('app', 'LDC'),
-            '6' => Yii::t('app', 'IBC'),
-            '7' => Yii::t('app', 'IC'),
-            '8' => Yii::t('app', 'LP'),
+            User::PLC => Yii::t('app', 'PLC'),
+            User::LTD => Yii::t('app', 'Ltd'),
+            User::INC => Yii::t('app', 'Inc.'),
+            User::CORP => Yii::t('app', 'Corp.'),
+            User::LLC => Yii::t('app', 'LLC'),
+            User::LDC => Yii::t('app', 'LDC'),
+            User::IBC => Yii::t('app', 'IBC'),
+            User::IC => Yii::t('app', 'IC'),
+            User::LP => Yii::t('app', 'LP'),
         ], ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
     <div class="show2 hide2"><?= $form->field($model, 'site')->textInput(['value' => 'http://']) ?></div>
 

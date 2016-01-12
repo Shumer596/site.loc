@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use app\models\User;
+
 /**
  * RegForm is the model behind the login form.
  */
@@ -33,7 +34,7 @@ class RegistrationForm extends Model
     {
         return [
             [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
-            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required','on' => User::SCENARIO_COMPANY],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
             [['INN'], 'integer'],
             [['address'], 'string'],
             [['email'], 'email'],
