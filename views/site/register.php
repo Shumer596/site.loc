@@ -31,12 +31,13 @@ use app\models\City;
             AutoComplete::className(), [
             'clientOptions' => [
                 'source' => City::find()
-                    ->select(['name as label'])
+                    ->select(['city_id as value', 'name as label'])
                     ->asArray()
                     ->all(),
             ],
             'options' => [
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'placeholder' => Yii::t('app', 'Start typing the name')
             ]
         ]); ?>
     </div>
