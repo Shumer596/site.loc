@@ -31,7 +31,8 @@ use app\models\City;
             AutoComplete::className(), [
             'clientOptions' => [
                 'source' => City::find()
-                    ->select(['city_id as value', 'name as label'])
+                    ->select(['CONCAT(\'some text\',name) as label'])
+//                    ->select(['city_id as value', 'name as label'])
                     ->asArray()
                     ->all(),
             ],
