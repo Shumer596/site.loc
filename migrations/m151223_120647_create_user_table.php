@@ -14,7 +14,7 @@ class m151223_120647_create_user_table extends Migration
             'activity' => 'string NOT NULL',  //деятельность
             'company' => 'string NOT NULL',   //название компании
             'type_ownership' => 'string NOT NULL',   //форма собственности
-            'INN' => 'int(16) NOT NULL',   //ИНН
+            'INN' => 'int(16) NULL',   //ИНН
             'address' => 'text NOT NULL',
             'firstName' => 'string NOT NULL',
             'surName' => 'string NOT NULL',

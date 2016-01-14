@@ -9,6 +9,8 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
+$this->registerCssFile('/css/form.css');
+$this->registerJsFile('/js/form.js',['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
@@ -18,6 +20,7 @@ use app\models\City;
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
+    <?php ActiveForm::end(); ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
@@ -52,11 +55,10 @@ use app\models\City;
     <?php ActiveForm::end(); ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Legal_form']); ?>
-    <div
-        class="show2"><?= $form->field($model, 'type_ownership')->dropDownList(User::getOwnership(), ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
-    <div class="show2"><?= $form->field($model, 'company') ?></div>
+    <div><?= $form->field($model, 'type_ownership')->dropDownList(User::getOwnership(), ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
+    <div><?= $form->field($model, 'company') ?></div>
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
-    <div class="show2"><?= $form->field($model, 'INN') ?></div>
+    <div><?= $form->field($model, 'INN') ?></div>
     <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
             'clientOptions' => [
@@ -73,7 +75,7 @@ use app\models\City;
             ]
         ]); ?>
     </div>
-    <div class="show2"><?= $form->field($model, 'address') ?></div>
+    <div><?= $form->field($model, 'address') ?></div>
     <div><?= $form->field($model, 'surName') ?></div>
     <div><?= $form->field($model, 'firstName') ?></div>
     <div><?= $form->field($model, 'lastName') ?></div>
@@ -87,7 +89,5 @@ use app\models\City;
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 </div><!-- site-register -->
