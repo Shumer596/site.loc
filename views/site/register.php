@@ -20,15 +20,8 @@ use app\models\City;
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
-    <div> <?= $form->field($model, 'activity')->dropDownList([
-            User::CARRIER => Yii::t('app', 'Carrier'),
-            User::FORWARDER => Yii::t('app', 'Forwarder'),
-            User::SNIPER => Yii::t('app', 'Shipper'),
-            User::DISPATCHER => Yii::t('app', 'Dispatcher'),
-            User::FORWARDER_CARRIER => Yii::t('app', 'Forwarder-carrier'),
-            User::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier'),
-            User::INSURANCE_AGENT => Yii::t('app', 'Insurance agent'),
-        ], ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
+    <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
+            ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
             'clientOptions' => [
@@ -59,27 +52,10 @@ use app\models\City;
     <?php ActiveForm::end(); ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Legal_form']); ?>
-    <div class="show2"><?= $form->field($model, 'type_ownership')->dropDownList([
-            User::PLC => Yii::t('app', 'PLC'),
-            User::LTD => Yii::t('app', 'Ltd'),
-            User::INC => Yii::t('app', 'Inc.'),
-            User::CORP => Yii::t('app', 'Corp.'),
-            User::LLC => Yii::t('app', 'LLC'),
-            User::LDC => Yii::t('app', 'LDC'),
-            User::IBC => Yii::t('app', 'IBC'),
-            User::IC => Yii::t('app', 'IC'),
-            User::LP => Yii::t('app', 'LP'),
-        ], ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
+    <div
+        class="show2"><?= $form->field($model, 'type_ownership')->dropDownList(User::getOwnership(), ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
     <div class="show2"><?= $form->field($model, 'company') ?></div>
-    <div> <?= $form->field($model, 'activity')->dropDownList([
-            User::CARRIER => Yii::t('app', 'Carrier(company)'),
-            User::FORWARDER => Yii::t('app', 'Forwarder(company)'),
-            User::SNIPER => Yii::t('app', 'Shipper(company)'),
-            User::DISPATCHER => Yii::t('app', 'Dispatcher(company)'),
-            User::FORWARDER_CARRIER => Yii::t('app', 'Forwarder-carrier(company)'),
-            User::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier(company)'),
-            User::INSURANCE_AGENT => Yii::t('app', 'Insurance company'),
-        ], ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
+    <div> <?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div class="show2"><?= $form->field($model, 'INN') ?></div>
     <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [

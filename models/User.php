@@ -59,6 +59,54 @@ class User extends ActiveRecord implements IdentityInterface
     const LP = 'LP';
     const IC = 'IC';
 
+    /**
+     * @return array of activity list for Individual user
+     */
+    public function getActivity()
+    {
+        return [
+            self::CARRIER => Yii::t('app', 'Carrier'),
+            self::FORWARDER => Yii::t('app', 'Forwarder'),
+            self::SNIPER => Yii::t('app', 'Shipper'),
+            self::DISPATCHER => Yii::t('app', 'Dispatcher'),
+            self::FORWARDER_CARRIER => Yii::t('app', 'Forwarder-carrier'),
+            self::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier'),
+            self::INSURANCE_AGENT => Yii::t('app', 'Insurance agent')
+        ];
+    }
+    /**
+     * @return array of activity list for Company  user
+     */
+    public function getCompanyActivity()
+    {
+        return [
+            self::CARRIER => Yii::t('app', 'Carrier(company)'),
+            self::FORWARDER => Yii::t('app', 'Forwarder(company)'),
+            self::SNIPER => Yii::t('app', 'Shipper(company)'),
+            self::DISPATCHER => Yii::t('app', 'Dispatcher(company)'),
+            self::FORWARDER_CARRIER => Yii::t('app', 'Forwarder-carrier(company)'),
+            self::SNIPER_CARRIER => Yii::t('app', 'Shipper-carrier(company)'),
+            self::INSURANCE_AGENT => Yii::t('app', 'Insurance company')
+        ];
+    }
+
+    /**
+     * @return array of ownerships list
+     */
+    public function getOwnerShip()
+    {
+        return [
+            User::PLC => Yii::t('app', 'PLC'),
+            User::LTD => Yii::t('app', 'Ltd'),
+            User::INC => Yii::t('app', 'Inc.'),
+            User::CORP => Yii::t('app', 'Corp.'),
+            User::LLC => Yii::t('app', 'LLC'),
+            User::LDC => Yii::t('app', 'LDC'),
+            User::IBC => Yii::t('app', 'IBC'),
+            User::IC => Yii::t('app', 'IC'),
+            User::LP => Yii::t('app', 'LP'),
+        ];
+    }
 
     public function scenarios()
     {
