@@ -11,14 +11,14 @@ use app\models\City;
 /* @var $form ActiveForm */
 ?>
 <div class="site-register">
-    <?php $form = ActiveForm::begin(); ?>
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
-    <?php ActiveForm::end(); ?>
+
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
     <div> <?= $form->field($model, 'activity')->dropDownList([
             User::CARRIER => Yii::t('app', 'Carrier'),
@@ -113,4 +113,5 @@ use app\models\City;
 
     <?php ActiveForm::end(); ?>
 
+    <?php ActiveForm::end(); ?>
 </div><!-- site-register -->
