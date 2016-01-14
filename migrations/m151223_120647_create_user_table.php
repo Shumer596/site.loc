@@ -10,7 +10,7 @@ class m151223_120647_create_user_table extends Migration
         $this->createTable('user', [
             'user_id' => 'pk',
             'status' => 'string NOT NULL', //физ или юр лицо
-            'city' => 'string NOT NULL',      //город
+            'city' => 'int(11) NOT NULL',      //город
             'activity' => 'string NOT NULL',  //деятельность
             'company' => 'string NOT NULL',   //название компании
             'type_ownership' => 'string NOT NULL',   //форма собственности

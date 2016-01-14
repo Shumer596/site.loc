@@ -29,7 +29,7 @@ $this->registerJsFile('/js/form.js',['depends' => [\yii\web\JqueryAsset::classNa
             AutoComplete::className(), [
             'clientOptions' => [
                 'source' => City::find()
-                    ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label'])
+                    ->select(['city.id as value', 'CONCAT(city.name,\', \', region.name ) as label'])
                     ->innerJoin('region', 'city.region_id = region.region_id')
                     ->orderBy("city_id asc")
                     ->asArray()
