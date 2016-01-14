@@ -32,10 +32,16 @@ use app\models\City;
     <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
             'clientOptions' => [
+                //                'source' => City::find()
+                //                    ->select(['city_id as value', 'CONCAT(name,\', \', region_id ) as label'])
+                //                    ->asArray()
+                //                    ->all(),
                 'source' => City::find()
-                    ->select(['city_id as value', 'CONCAT(name,\', \', region_id ) as label'])
+                    ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label'])
+                    ->innerJoin('region', 'city.region_id = region.region_id')
+                    ->orderBy("city_id asc")
                     ->asArray()
-                    ->all(),
+                    ->all()
             ],
             'options' => [
                 'class' => 'form-control',
