@@ -55,34 +55,11 @@ class RegistrationForm extends Model
         if ($this->validate()) {
             $user = new User;
             $user->status = $this->status;
-
+            $user->setAttributes($this->getAttributes());
             if (User::SCENARIO_PERSON == $this->status) {
-                $user->setScenario(User::SCENARIO_PERSON);
-                $user->activity = $this->activity;
-                $user->city = $this->city;
-                $user->surName = $this->surName;
-                $user->firstName = $this->firstName;
-                $user->lastName = $this->lastName;
-                $user->number = $this->number;
-                $user->skype = $this->skype;
-                $user->email = $this->email;
-                $user->setPassword($this->password);
+                $user->setScenario($this->status);
             } elseif (User::SCENARIO_COMPANY == $this->status) {
-                $user->setScenario(User::SCENARIO_COMPANY);
-                $user->activity = $this->activity;
-                $user->company = $this->company;
-                $user->type_ownership = $this->type_ownership;
-                $user->INN = $this->INN;
-                $user->city = $this->city;
-                $user->address = $this->address;
-                $user->surName = $this->surName;
-                $user->firstName = $this->firstName;
-                $user->lastName = $this->lastName;
-                $user->number = $this->number;
-                $user->site = $this->site;
-                $user->skype = $this->skype;
-                $user->email = $this->email;
-                $user->setPassword($this->password);
+                $user->setScenario($this->status);
             } else {
                 return false;
             }

@@ -9,8 +9,8 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
-$this->registerCssFile('/css/form.css');
-$this->registerJsFile('/js/form.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('/site.loc/web/css/form.css');
+$this->registerJsFile('/site.loc/web/js/form.js',['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
@@ -29,7 +29,7 @@ $this->registerJsFile('/js/form.js',['depends' => [\yii\web\JqueryAsset::classNa
             AutoComplete::className(), [
             'clientOptions' => [
                 'source' => City::find()
-                    ->select(['city.id as value', 'CONCAT(city.name,\', \', region.name ) as label'])
+                    ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label'])
                     ->innerJoin('region', 'city.region_id = region.region_id')
                     ->orderBy("city_id asc")
                     ->asArray()

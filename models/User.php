@@ -74,6 +74,7 @@ class User extends ActiveRecord implements IdentityInterface
             self::INSURANCE_AGENT => Yii::t('app', 'Insurance agent')
         ];
     }
+
     /**
      * @return array of activity list for Company  user
      */
