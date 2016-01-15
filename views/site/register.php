@@ -10,17 +10,16 @@ use app\models\City;
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
 $this->registerCssFile('/site.loc/web/css/form.css');
-$this->registerJsFile('/site.loc/web/js/form.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'Global']); ?>
 
     <?= $form->field($model, 'status')->dropDownList([
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
     ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
-    <?php ActiveForm::end(); ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
@@ -57,7 +56,7 @@ $this->registerJsFile('/site.loc/web/js/form.js',['depends' => [\yii\web\JqueryA
     <?php $form = ActiveForm::begin(['id' => 'Legal_form']); ?>
     <div><?= $form->field($model, 'type_ownership')->dropDownList(User::getOwnership(), ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
     <div><?= $form->field($model, 'company') ?></div>
-    <div> <?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
+    <div><?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div><?= $form->field($model, 'INN') ?></div>
     <div><?= $form->field($model, 'city')->widget(
             AutoComplete::className(), [
@@ -81,7 +80,7 @@ $this->registerJsFile('/site.loc/web/js/form.js',['depends' => [\yii\web\JqueryA
     <div><?= $form->field($model, 'lastName') ?></div>
     <div><?= $form->field($model, 'number') ?></div>
     <div><?= $form->field($model, 'skype') ?></div>
-    <div class="show2 hide2"><?= $form->field($model, 'site')->textInput(['value' => 'http://']) ?></div>
+    <div><?= $form->field($model, 'site')->textInput(['value' => 'http://']) ?></div>
     <div><?= $form->field($model, 'email') ?></div>
     <div><?= $form->field($model, 'password') ?></div>
 
@@ -89,5 +88,5 @@ $this->registerJsFile('/site.loc/web/js/form.js',['depends' => [\yii\web\JqueryA
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
 
-<?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 </div><!-- site-register -->
