@@ -2,6 +2,7 @@
 
 use app\models\User;
 use yii\helpers\Html;
+use yii\widgets\ActiveField;
 use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use app\models\City;
@@ -9,17 +10,16 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
-$this->registerCssFile('/site.loc/web/css/form.css');
-$this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('/css/form.css');
+$this->registerJsFile('/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
-    <?php $form = ActiveForm::begin(['id' => 'Global']); ?>
-
-    <?= $form->field($model, 'status')->dropDownList([
+    <?php echo Html::activeDropDownList($model, 'status', [
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
-    ], ['prompt' => Yii::t('app', 'Select the type of registration')]) ?>
+    ],['prompt'=>'Select type of registration']) ?>
+
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),

@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use app\models\User;
+use yii\helpers\VarDumper;
 
 /**
  * RegForm is the model behind the login form.
@@ -55,6 +56,7 @@ class RegistrationForm extends Model
         if ($this->validate()) {
             $user = new User;
             $user->status = $this->status;
+            VarDumper::dump($this->status);
             $user->setAttributes($this->getAttributes());
             if (User::SCENARIO_PERSON == $this->status) {
                 $user->setScenario($this->status);
