@@ -1,8 +1,7 @@
 <?php
 
 use app\models\User;
-use yii\helpers\Html;
-use yii\widgets\ActiveField;
+use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use app\models\City;
@@ -10,8 +9,8 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
-$this->registerCssFile('/css/form.css');
-$this->registerJsFile('/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('/site.loc/web/css/form.css');
+$this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
@@ -22,6 +21,7 @@ $this->registerJsFile('/js/form.js', ['depends' => [\yii\web\JqueryAsset::classN
 
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
+    <?= $form->field($model, 'status')->hiddenInput(['value'=>User::SCENARIO_PERSON])->label(false)?>
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
             ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div><?= $form->field($model, 'city')->widget(
@@ -47,13 +47,14 @@ $this->registerJsFile('/js/form.js', ['depends' => [\yii\web\JqueryAsset::classN
     <div><?= $form->field($model, 'number') ?></div>
     <div><?= $form->field($model, 'skype') ?></div>
     <div><?= $form->field($model, 'email') ?></div>
-    <div><?= $form->field($model, 'password') ?></div>
+    <div><?= $form->field($model, 'password')->passwordInput() ?></div>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
     <?php $form = ActiveForm::begin(['id' => 'Legal_form']); ?>
+    <?= $form->field($model, 'status')->hiddenInput(['value'=>User::SCENARIO_COMPANY])->label(false)?>
     <div><?= $form->field($model, 'type_ownership')->dropDownList(User::getOwnership(), ['prompt' => Yii::t('app', 'Select the legal form')]) ?></div>
     <div><?= $form->field($model, 'company') ?></div>
     <div><?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
@@ -82,7 +83,7 @@ $this->registerJsFile('/js/form.js', ['depends' => [\yii\web\JqueryAsset::classN
     <div><?= $form->field($model, 'skype') ?></div>
     <div><?= $form->field($model, 'site')->textInput(['value' => 'http://']) ?></div>
     <div><?= $form->field($model, 'email') ?></div>
-    <div><?= $form->field($model, 'password') ?></div>
+    <div><?= $form->field($model, 'password')->passwordInput() ?></div>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>

@@ -55,9 +55,6 @@ class RegistrationForm extends Model
     {
         if ($this->validate()) {
             $user = new User;
-            $user->status = $this->status;
-            VarDumper::dump($this->status);
-            $user->setAttributes($this->getAttributes());
             if (User::SCENARIO_PERSON == $this->status) {
                 $user->setScenario($this->status);
             } elseif (User::SCENARIO_COMPANY == $this->status) {
@@ -65,6 +62,7 @@ class RegistrationForm extends Model
             } else {
                 return false;
             }
+            $user->setAttributes($this->getAttributes());
             return $user->save();
         }
         return false;
