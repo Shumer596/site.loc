@@ -17,7 +17,10 @@ $this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\Jquery
     <?php echo Html::activeDropDownList($model, 'status', [
         User::SCENARIO_PERSON => Yii::t('app', 'Individual'),
         User::SCENARIO_COMPANY => Yii::t('app', 'Legal entity'),
-    ],['prompt'=>'Select type of registration']) ?>
+    ],[
+        'prompt'=>'Select type of registration',
+        'class'=>'form-control',
+    ]) ?>
 
 
     <?php $form = ActiveForm::begin(['id' => 'Individual_form']); ?>
