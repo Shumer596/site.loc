@@ -6,6 +6,7 @@ use app\models\City;
 use app\models\RegistrationForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -116,13 +117,15 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionAutocomplate()
+    public function actionAutocomplete()
     {
-           return City::find()
+        $data = City::find()
             ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label', 'region.name as region'])
             ->innerJoin('region', 'city.region_id = region.region_id')
-            ->andFilterWhere(['like', 'name', Yii::$app->request->get('term')])
+            ->andFilterWhere(['like', 'city.name', Yii::$app->request->get('term')])
             ->asArray()
             ->all();
+
+        return Json::encode($data);
     }
 }
