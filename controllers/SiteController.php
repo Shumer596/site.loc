@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\City;
 use app\models\RegistrationForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -108,11 +109,20 @@ class SiteController extends Controller
         } else {
             Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации');
             Yii::error('Ошибка при регистрации');
-//            return $this->refresh();
+            //            return $this->refresh();
         }
         return $this->render('register', [
             'model' => $model,
         ]);
     }
 
+    public function actionAutocomplate()
+    {
+           return City::find()
+            ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label', 'region.name as region'])
+            ->innerJoin('region', 'city.region_id = region.region_id')
+            ->andFilterWhere(['like', 'name', Yii::$app->request->get('term')])
+            ->asArray()
+            ->all();
+    }
 }
