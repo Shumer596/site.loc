@@ -33,24 +33,24 @@ $this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\Jquery
     <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
             ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div><?= $form->field($model, 'city')->widget(
-            AutoComplete::className(), [
-            'clientOptions' => [
-                'source' => City::find()
-                    ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label', 'region.name as region'])
-                    ->innerJoin('region', 'city.region_id = region.region_id')
-                    ->andFilterWhere(['like', 'name', Yii::$app->request->get('term')])
-                    ->asArray()
-                    ->all(),
-                'select' => new JsExpression('function(event, ui) {
-                             this.value = ui.item.id + "бл. " + ui.item.name;
-                             window.location = ui.item.id;
+            AutoComplete::className(),
+            [
+                'clientOptions' =>
+                    [
+                        'source' => Url::to(['site/autocomplete']),
+                        'autoFill' => true,
+                        'minLength' => '3',
+                        'select' => new JsExpression('function(event, ui) {
+
                              }')
-            ],
-            'options' => [
-                'class' => 'form-control',
-                'placeholder' => Yii::t('app', 'Start typing the name')
-            ]
-        ]); ?>
+                    ],
+                'options' =>
+                    [
+                        'id' => 'IndividualCity',
+                        'class' => 'form-control',
+                        'placeholder' => Yii::t('app', 'Start typing the name')
+                    ]
+            ]) ?>
     </div>
 
     <div><?= $form->field($model, 'surName') ?></div>
@@ -72,28 +72,23 @@ $this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\Jquery
     <div><?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
     <div><?= $form->field($model, 'INN') ?></div>
     <div><?= $form->field($model, 'city')->widget(
-            AutoComplete::className(), [
-            'clientOptions' => [
-//                'source' => City::find()
-//                    ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label', 'region.name as region'])
-//                    ->innerJoin('region', 'city.region_id = region.region_id')
-//                    ->andFilterWhere(['like', 'name', Yii::$app->request->get('term')])
-//                    ->asArray()
-//                    ->all(),
-                'source' => Url::to(['site/autocomplete']),
-                'autoFill'=>true,
-                'minLength'=>'0',
-                'select' => new JsExpression('function(event, ui) {
-                             this.value = ui.item.id + "бл. " + ui.item.name;
-                             window.location = ui.item.id;
-                             }')
-
-            ],
-            'options' => [
-                'class' => 'form-control',
-                'placeholder' => Yii::t('app', 'Start typing the name')
-            ]
-        ]); ?>
+            AutoComplete::className(),
+            [
+                'clientOptions' =>
+                    [
+                        'source' => Url::to(['site/autocomplete']),
+                        'autoFill' => true,
+                        'minLength' => '3',
+                        'select' => new JsExpression('function(event, ui) {
+                                  }')
+                    ],
+                'options' =>
+                    [
+                        'id' => 'LegalCity',
+                        'class' => 'form-control',
+                        'placeholder' => Yii::t('app', 'Start typing the name')
+                    ]
+            ]) ?>
     </div>
     <div><?= $form->field($model, 'address') ?></div>
     <div><?= $form->field($model, 'surName') ?></div>
