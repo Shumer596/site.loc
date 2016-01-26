@@ -62,7 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return array of activity list for Individual user
      */
-    public function getActivity()
+    public static function getActivity()
     {
         return [
             self::CARRIER => Yii::t('app', 'Carrier'),
@@ -78,7 +78,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return array of activity list for Company  user
      */
-    public function getCompanyActivity()
+    public static function getCompanyActivity()
     {
         return [
             self::CARRIER => Yii::t('app', 'Carrier(company)'),
@@ -94,7 +94,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return array of ownerships list
      */
-    public function getOwnerShip()
+    public  static function getOwnerShip()
     {
         return [
             User::PLC => Yii::t('app', 'PLC'),
