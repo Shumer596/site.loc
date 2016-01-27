@@ -128,4 +128,14 @@ class SiteController extends Controller
 
         return Json::encode($data);
     }
+
+    public function actionProfile()
+    {
+        $model = Yii::$app->user->getIdentity();
+
+        return $this->render('profile', [
+            'model' => $model,
+        ]);
+    }
+
 }
