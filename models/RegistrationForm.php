@@ -63,6 +63,7 @@ class RegistrationForm extends Model
                 return false;
             }
             $user->setAttributes($this->getAttributes());
+            $user->setPassword($this->password);
             return $user->save();
         }
         return false;

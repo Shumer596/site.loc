@@ -94,7 +94,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return array of ownerships list
      */
-    public  static function getOwnerShip()
+    public static function getOwnerShip()
     {
         return [
             User::PLC => Yii::t('app', 'PLC'),
@@ -182,7 +182,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function validatePassword($password)
     {
-        return Yii::$app->security->validatePassword($password, $this->$password);
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 
     public function behaviors()
@@ -242,6 +242,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         return static::findOne(['access_token' => $token]);
+    }
+
+    /**
+     * Finds user by username(email)
+     *
+     * @param string $username
+     * @return null|static
+     */
+    public static function findByUsername($username)
+    {
+        return self::findOne(['email' => $username]);
     }
 
     /**
