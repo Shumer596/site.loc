@@ -1,4 +1,5 @@
 <?php
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
@@ -13,11 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a(Yii::t('app', 'Update profile'), ['update'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' =>
             [
-                'status',
                 'activity',
                 'city',
                 'surName',
