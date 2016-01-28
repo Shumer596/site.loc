@@ -1,52 +1,33 @@
 <?php
-use app\models\User;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\jui\AutoComplete;
 use yii\widgets\ActiveForm;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 /* @var $form ActiveForm */
+$this->title = Yii::t('app', 'Profile');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-profile">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <div><?= $form->field($model, 'status') ?></div>
-    <div> <?= $form->field($model, 'activity')->dropDownList(User::getActivity(),
-            ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
-    <div><?= $form->field($model, 'city')->widget(
-            AutoComplete::className(),
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' =>
             [
-                'clientOptions' =>
-                    [
-                        'source' => Url::to(['site/autocomplete']),
-                        'autoFill' => true,
-                        'minLength' => '3',
-//                        'select' => new JsExpression('function(event, ui) {
-//
-//                             }')
-                    ],
-                'options' =>
-                    [
-                        'id' => 'IndividualCity',
-                        'class' => 'form-control',
-                        'placeholder' => Yii::t('app', 'Start typing the name')
-                    ]
-            ]) ?>
-    </div>
-    <div><?= $form->field($model, 'surName') ?></div>
-    <div><?= $form->field($model, 'firstName') ?></div>
-    <div><?= $form->field($model, 'lastName') ?></div>
-    <div><?= $form->field($model, 'number') ?></div>
-    <div><?= $form->field($model, 'skype') ?></div>
-    <div><?= $form->field($model, 'email') ?></div>
+                'status',
+                'activity',
+                'city',
+                'surName',
+                'firstName',
+                'lastName',
+                'number',
+                'skype',
+                'email',
+                'created_at'
+            ],
+    ]) ?>
 
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
-    </div>
-    <?php ActiveForm::end(); ?>
-
-</div><!-- user-profile -->
+</div>

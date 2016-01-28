@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\City;
 use app\models\RegistrationForm;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
@@ -131,7 +132,7 @@ class SiteController extends Controller
 
     public function actionProfile()
     {
-        $model = Yii::$app->user->getIdentity();
+        $model = User::findOne(Yii::$app->user->identity->getId());
 
         return $this->render('profile', [
             'model' => $model,
