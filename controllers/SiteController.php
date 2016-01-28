@@ -6,6 +6,7 @@ use app\models\City;
 use app\models\RegistrationForm;
 use app\models\User;
 use Yii;
+use yii\base\ErrorException;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -133,10 +134,17 @@ class SiteController extends Controller
     public function actionProfile()
     {
         $model = User::findOne(Yii::$app->user->identity->getId());
-
-        return $this->render('profile', [
-            'model' => $model,
-        ]);
+        if ($model->status == User::SCENARIO_PERSON) {
+            return $this->render('profile-person', [
+                'model' => $model,
+            ]);
+        } elseif ($model->status == User::SCENARIO_COMPANY) {
+            return $this->render('profile-company', [
+                'model' => $model,
+            ]);
+        } else {
+            false;
+        }
     }
 
 }
