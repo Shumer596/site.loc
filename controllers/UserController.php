@@ -39,9 +39,17 @@ class UserController extends Controller
             return $this->redirect(['profile']);
         } else {
             echo 'FUCK! Update() does not work!';
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            if ($model->status == User::SCENARIO_PERSON) {
+                return $this->render('update-person', [
+                    'model' => $model,
+                ]);
+            } elseif ($model->status == User::SCENARIO_COMPANY) {
+                return $this->render('update-company', [
+                    'model' => $model,
+                ]);
+            } else {
+                false;
+            }
         }
     }
 
