@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' =>
             [
                 'status',
+                'email',
                 'activity',
                 'city',
                 'surName',
@@ -25,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'lastName',
                 'number',
                 'skype',
-                'email',
                 'created_at'
             ],
     ]) ?>

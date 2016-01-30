@@ -13,11 +13,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a(Yii::t('app', 'Update'), ['user/update'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Change Password'), ['password-change'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' =>
             [
                 'status',
+                'email',
                 'type_ownership',
                 'company',
                 'INN',
@@ -30,7 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'number',
                 'skype',
                 'site',
-                'email',
                 'created_at'
             ],
     ]) ?>

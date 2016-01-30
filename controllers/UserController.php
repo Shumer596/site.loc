@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\ProfileForm;
 use app\models\User;
 use Yii;
+use yii\helpers\VarDumper;
+use yii\web\Controller;
 
-class UserController extends \yii\web\Controller
+class UserController extends Controller
 {
     public function actionProfile()
     {
@@ -23,9 +26,23 @@ class UserController extends \yii\web\Controller
         }
     }
 
-    public function findModel(){
-
+    public function findModel()
+    {
         return User::findOne(Yii::$app->user->identity->getId());
+    }
+
+    public function actionUpdate()
+    {
+        $user = $this->findModel();
+        $model = new ProfileForm($user);
+        if ($model->load(Yii::$app->request->post()) && $model->update()) {
+            return $this->redirect(['profile']);
+        } else {
+            echo 'FUCK! Update() does not work!';
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
 }
