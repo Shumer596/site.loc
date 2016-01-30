@@ -130,21 +130,4 @@ class SiteController extends Controller
 
         return Json::encode($data);
     }
-
-    public function actionProfile()
-    {
-        $model = User::findOne(Yii::$app->user->identity->getId());
-        if ($model->status == User::SCENARIO_PERSON) {
-            return $this->render('profile-person', [
-                'model' => $model,
-            ]);
-        } elseif ($model->status == User::SCENARIO_COMPANY) {
-            return $this->render('profile-company', [
-                'model' => $model,
-            ]);
-        } else {
-            false;
-        }
-    }
-
 }
