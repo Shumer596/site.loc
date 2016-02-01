@@ -8,6 +8,7 @@ use yii\widgets\DetailView;
 /* @var $form ActiveForm */
 $this->title = Yii::t('app', 'Profile');
 $this->params['breadcrumbs'][] = $this->title;
+echo ($model->city);
 ?>
 <div class="user-profile">
 

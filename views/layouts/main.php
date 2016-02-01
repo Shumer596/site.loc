@@ -46,7 +46,7 @@ AppAsset::register($this);
             ],
             [
                 'label' => 'Profile',
-                'url' => ['/site/profile'],
+                'url' => ['/user/profile'],
                 'visible' => !Yii::$app->user->isGuest
             ],
             Yii::$app->user->isGuest ?

@@ -1,6 +1,5 @@
 <?php
 
-use Yii;
 use app\models\User;
 use yii\bootstrap\Html;
 use yii\helpers\Url;
@@ -12,8 +11,8 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
-$this->registerCssFile(Yii::getAlias('@web').'/css/form.css');
-$this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile(Yii::getAlias('@web') . '/css/form.css');
+$this->registerJsFile(Yii::getAlias('@web') . '/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
@@ -41,9 +40,11 @@ $this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\w
                         'source' => Url::to(['site/autocomplete']),
                         'autoFill' => true,
                         'minLength' => '3',
-                        'select' => new JsExpression('function(event, ui) {
-
-                             }')
+                        'select' => new JsExpression("function(event, ui) {
+                                         this.value = ui.item.label;
+                                         $('#city_input').val(ui.item.value);
+                                         return false;
+                                }")
                     ],
                 'options' =>
                     [
@@ -53,7 +54,7 @@ $this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\w
                     ]
             ]) ?>
     </div>
-
+    <div><?= $form->field($model, 'city')->hiddenInput(['id' => 'city_input'])->label(false) ?></div>
     <div><?= $form->field($model, 'surName') ?></div>
     <div><?= $form->field($model, 'firstName') ?></div>
     <div><?= $form->field($model, 'lastName') ?></div>
@@ -80,8 +81,11 @@ $this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\w
                         'source' => Url::to(['site/autocomplete']),
                         'autoFill' => true,
                         'minLength' => '3',
-                        'select' => new JsExpression('function(event, ui) {
-                                  }')
+                        'select' => new JsExpression("function(event, ui) {
+                                         this.value = ui.item.label;
+                                         $('#city_input2').val(ui.item.value);
+                                         return false;
+                                }")
                     ],
                 'options' =>
                     [
@@ -91,6 +95,7 @@ $this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\w
                     ]
             ]) ?>
     </div>
+    <div><?= $form->field($model, 'city')->hiddenInput(['id' => 'city_input2'])->label(false) ?></div>
     <div><?= $form->field($model, 'address') ?></div>
     <div><?= $form->field($model, 'surName') ?></div>
     <div><?= $form->field($model, 'firstName') ?></div>
