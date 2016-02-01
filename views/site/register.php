@@ -1,5 +1,6 @@
 <?php
 
+use Yii;
 use app\models\User;
 use yii\bootstrap\Html;
 use yii\helpers\Url;
@@ -11,8 +12,8 @@ use app\models\City;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegistrationForm */
 /* @var $form ActiveForm */
-$this->registerCssFile('/site.loc/web/css/form.css');
-$this->registerJsFile('/site.loc/web/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile(Yii::getAlias('@web').'/css/form.css');
+$this->registerJsFile(Yii::getAlias('@web').'/js/form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="site-register">
 
