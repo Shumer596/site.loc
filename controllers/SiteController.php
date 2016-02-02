@@ -107,11 +107,10 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->register()) {
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно');
-            return $this->actionLogin();
+            return $this->goHome();
         } else {
             Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации');
             Yii::error('Ошибка при регистрации');
-            //            return $this->refresh();
         }
         return $this->render('register', [
             'model' => $model,

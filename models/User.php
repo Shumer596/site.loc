@@ -13,7 +13,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $user_id
  * @property string $status
- * @property string $city
+ * @property string $city_id
  * @property string $activity
  * @property string $company
  * @property string $type_ownership
@@ -113,9 +113,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_PERSON] = [
-            'status', 'activity', 'city', 'surName', 'firstName', 'lastName', 'number', 'skype', 'email', 'password'
+            'status', 'activity', 'city_id', 'surName', 'firstName', 'lastName', 'number', 'skype', 'email', 'password'
         ];
-        $scenarios[self::SCENARIO_COMPANY] = ['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'surName', 'firstName', 'lastName', 'number', 'site', 'skype', 'email', 'password'];
+        $scenarios[self::SCENARIO_COMPANY] = ['status', 'activity', 'company', 'type_ownership', 'INN', 'city_id', 'address', 'surName', 'firstName', 'lastName', 'number', 'site', 'skype', 'email', 'password'];
         return $scenarios;
     }
 
@@ -133,12 +133,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_PERSON],
-            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_COMPANY],
-            [['INN'], 'integer'],
+            [['status', 'activity', 'city_id', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_PERSON],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city_id', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => self::SCENARIO_COMPANY],
+            [['INN','city_id'], 'integer'],
             [['address'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['status', 'city', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site', 'authKey', 'token'], 'string', 'max' => 255],
+            [['status', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site', 'authKey', 'token'], 'string', 'max' => 255],
             [['email'], 'email'],
             [['email', 'password', 'skype'], 'string', 'max' => 100],
             [['number'], 'string', 'max' => 20]
@@ -153,7 +153,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'user_id' => Yii::t('app', 'User ID'),
             'status' => Yii::t('app', 'Status'),
-            'city' => Yii::t('app', 'City'),
+            'city_id' => Yii::t('app', 'City'),
             'activity' => Yii::t('app', 'Activity'),
             'company' => Yii::t('app', 'Company'),
             'type_ownership' => Yii::t('app', 'Type Ownership'),

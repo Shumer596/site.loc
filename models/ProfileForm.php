@@ -38,7 +38,7 @@ class ProfileForm extends Model
 {
 
     public $status;
-    public $city;
+    public $city_id;
     public $activity;
     public $company;
     public $INN;
@@ -79,7 +79,7 @@ class ProfileForm extends Model
         $this->company = $this->_user->company;
         $this->number = $this->_user->number;
         $this->INN = $this->_user->INN;
-        $this->city = $this->_user->city;
+        $this->city_id = $this->_user->city_id;
         $this->password = $this->_user->password;
         parent::init();
     }
@@ -91,12 +91,12 @@ class ProfileForm extends Model
     public function rules()
     {
         return [
-            [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
-            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
-            [['INN'], 'integer'],
+            [['status', 'activity', 'city_id', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city_id', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
+            [['INN','city_id'], 'integer'],
             [['address'], 'string'],
             [['email'], 'email'],
-            [['status', 'city', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
+            [['status', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
             [['email'], 'unique', 'targetClass' => 'app\models\User'],
 //            [['company'], 'unique', 'targetClass' => 'app\models\User'],
 //            [['INN'], 'unique', 'targetClass' => 'app\models\User'],
@@ -129,26 +129,26 @@ class ProfileForm extends Model
     public function attributeLabels()
     {
         return [
-//            'user_id' => Yii::t('app', 'User ID'),
-//            'status' => Yii::t('app', 'Status'),
-//            'city' => Yii::t('app', 'City'),
-//            'activity' => Yii::t('app', 'Activity'),
-//            'company' => Yii::t('app', 'Company'),
-//            'type_ownership' => Yii::t('app', 'Type Ownership'),
-//            'INN' => Yii::t('app', 'Inn'),
-//            'address' => Yii::t('app', 'Address'),
-//            'firstName' => Yii::t('app', 'First Name'),
-//            'surName' => Yii::t('app', 'Sur Name'),
-//            'lastName' => Yii::t('app', 'Last Name'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'status' => Yii::t('app', 'Status'),
+            'city_id' => Yii::t('app', 'City'),
+            'activity' => Yii::t('app', 'Activity'),
+            'company' => Yii::t('app', 'Company'),
+            'type_ownership' => Yii::t('app', 'Type Ownership'),
+            'INN' => Yii::t('app', 'Inn'),
+            'address' => Yii::t('app', 'Address'),
+            'firstName' => Yii::t('app', 'First Name'),
+            'surName' => Yii::t('app', 'Sur Name'),
+            'lastName' => Yii::t('app', 'Last Name'),
             'email' => Yii::t('app', 'Email'),
-//            'password' => Yii::t('app', 'Password'),
-//            'number' => Yii::t('app', 'Number'),
-//            'site' => Yii::t('app', 'Site'),
-//            'skype' => Yii::t('app', 'Skype'),
-//            'created_at' => Yii::t('app', 'Created At'),
-//            'updated_at' => Yii::t('app', 'Updated At'),
-//            'authKey' => Yii::t('app', 'Auth Key'),
-//            'token' => Yii::t('app', 'Token'),
+            'password' => Yii::t('app', 'Password'),
+            'number' => Yii::t('app', 'Number'),
+            'site' => Yii::t('app', 'Site'),
+            'skype' => Yii::t('app', 'Skype'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'authKey' => Yii::t('app', 'Auth Key'),
+            'token' => Yii::t('app', 'Token'),
         ];
     }
 

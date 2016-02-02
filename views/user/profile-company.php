@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'activity',
                 [
                     'label' => 'City',
-                    'value' => City::findById($model->city)
+                    'value' => City::findById($model->city_id)
                 ],
                 'address',
                 'surName',

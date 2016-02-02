@@ -13,7 +13,7 @@ use yii\helpers\VarDumper;
 class RegistrationForm extends Model
 {
     public $status;
-    public $city;
+    public $city_id;
     public $activity;
     public $company;
     public $INN;
@@ -34,12 +34,12 @@ class RegistrationForm extends Model
     public function rules()
     {
         return [
-            [['status', 'activity', 'city', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
-            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
-            [['INN'], 'integer'],
+            [['status', 'activity', 'city_id', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
+            [['status', 'activity', 'company', 'type_ownership', 'INN', 'city_id', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
+            [['INN','city_id'], 'integer'],
             [['address'], 'string'],
             [['email'], 'email'],
-            [['status', 'city', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
+            [['status', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
             [['email'], 'unique', 'targetClass' => 'app\models\User'],
             [['company'], 'unique', 'targetClass' => 'app\models\User'],
             [['INN'], 'unique', 'targetClass' => 'app\models\User'],
@@ -76,7 +76,7 @@ class RegistrationForm extends Model
         return [
             'user_id' => Yii::t('app', 'User ID'),
             'status' => Yii::t('app', 'Status'),
-            'city' => Yii::t('app', 'City'),
+            'city_id' => Yii::t('app', 'City'),
             'activity' => Yii::t('app', 'Activity'),
             'company' => Yii::t('app', 'Company'),
             'type_ownership' => Yii::t('app', 'Type Ownership'),

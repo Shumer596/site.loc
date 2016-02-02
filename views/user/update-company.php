@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div><?= $form->field($model, 'company') ?></div>
         <div><?= $form->field($model, 'activity')->dropDownList(User::getCompanyActivity(), ['prompt' => Yii::t('app', 'Select activity')]) ?></div>
         <div><?= $form->field($model, 'INN') ?></div>
-        <div><?= $form->field($model, 'city')->widget(
+        <div><?= $form->field($model, 'city_id')->widget(
                 AutoComplete::className(),
                 [
                     'clientOptions' =>
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                 ]) ?>
         </div>
-        <div><?= $form->field($model, 'city')->hiddenInput(['id' => 'city_input2'])->label(false) ?></div>
+        <div><?= $form->field($model, 'city_id')->hiddenInput(['id' => 'city_input2'])->label(false) ?></div>
         <div><?= $form->field($model, 'address') ?></div>
         <div><?= $form->field($model, 'surName') ?></div>
         <div><?= $form->field($model, 'firstName') ?></div>
