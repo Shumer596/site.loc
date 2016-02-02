@@ -1,5 +1,7 @@
 <?php
+use app\models\City;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
@@ -8,7 +10,6 @@ use yii\widgets\DetailView;
 /* @var $form ActiveForm */
 $this->title = Yii::t('app', 'Profile');
 $this->params['breadcrumbs'][] = $this->title;
-echo ($model->city);
 ?>
 <div class="user-profile">
 
@@ -26,7 +27,10 @@ echo ($model->city);
                 'status',
                 'email',
                 'activity',
-                'city',
+                [
+                    'label' => 'City',
+                    'value' => City::findById($model->city)
+                ],
                 'surName',
                 'firstName',
                 'lastName',

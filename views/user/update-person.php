@@ -31,9 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             'source' => Url::to(['site/autocomplete']),
                             'autoFill' => true,
                             'minLength' => '3',
-                            'select' => new JsExpression('function(event, ui) {
-
-                             }')
+                            'select' => new JsExpression("function(event, ui) {
+                                         this.value = ui.item.label;
+                                         $('#city_input').val(ui.item.value);
+                                         return false;
+                                }")
                         ],
                     'options' =>
                         [
@@ -43,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                 ]) ?>
         </div>
-
+        <div><?= $form->field($model, 'city')->hiddenInput(['id' => 'city_input'])->label(false) ?></div>
         <div><?= $form->field($model, 'surName') ?></div>
         <div><?= $form->field($model, 'firstName') ?></div>
         <div><?= $form->field($model, 'lastName') ?></div>

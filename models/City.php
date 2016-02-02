@@ -58,4 +58,22 @@ class City extends ActiveRecord
     {
         return $this->hasOne(Region::className(), ['region_id' => 'region_id']);
     }
+
+    /**
+     * Finds city.name & region.name by city.id
+     *
+     * @param $id
+     * @return string
+     */
+    public static function findById($id)
+    {
+        $data = self::find()
+            ->select(['CONCAT(city.name,\', \', region.name) as label'])
+            ->innerJoin('region', 'city.region_id = region.region_id')
+            ->andFilterWhere(['=', 'city_id', $id])
+            ->asArray()
+            ->one();
+        $string = array_shift($data);
+        return $string;
+    }
 }

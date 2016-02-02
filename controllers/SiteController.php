@@ -130,18 +130,4 @@ class SiteController extends Controller
 
         return Json::encode($data);
     }
-
-    public function actionCity()
-    {
-        $data = City::find()
-            ->select(['city_id as value', 'CONCAT(city.name,\', \', region.name ) as label', 'region.name as region'])
-            ->innerJoin('region', 'city.region_id = region.region_id')
-            ->andFilterWhere(['=', 'city_id', Yii::$app->request->get('berm')])
-            ->asArray()
-            ->all();
-
-        return Json::encode($data);
-    }
-
-
 }

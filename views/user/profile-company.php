@@ -1,4 +1,5 @@
 <?php
+use app\models\City;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
@@ -29,7 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'company',
                 'INN',
                 'activity',
-                'city',
+                [
+                    'label' => 'City',
+                    'value' => City::findById($model->city)
+                ],
                 'address',
                 'surName',
                 'firstName',
