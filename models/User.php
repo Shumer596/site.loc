@@ -221,6 +221,14 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Transport::className(), ['user_id' => 'user_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCity()
+    {
+        return $this->hasOne(City::className(), ['city_id' => 'city_id']);
+    }
+
 
     /**
      * Finds an identity by the given ID.
