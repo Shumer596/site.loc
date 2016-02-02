@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ProfileForm;
+use app\models\TransportForm;
 use app\models\User;
 use Yii;
 use yii\helpers\VarDumper;
@@ -51,6 +52,19 @@ class UserController extends Controller
                 false;
             }
         }
+    }
+
+    public function actionTransport()
+    {
+        $model = new TransportForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->addTransport()) {
+
+        }
+
+        return $this->render('transport', [
+            'model' => $model,
+        ]);
     }
 
 }

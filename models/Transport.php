@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "transport".
@@ -34,6 +36,30 @@ use yii\db\ActiveRecord;
  */
 class Transport extends ActiveRecord
 {
+    const CANOPY = 'Canopy';
+    const BROADSIDE = 'Broadside';
+    const BCC = 'Broadside+Canopy+Comic';
+    const BC = 'Broadside+Conic';
+    const REFRIGERATOR = 'Refrigerator';
+    const METAL = 'All-metal';
+    const BOOTH = 'Booth';
+    const VAN = 'Van';
+    const ISOTHERMAL = 'Isothermal';
+    const TRAWL_PLATFORM = 'Trawl platform';
+    const TRAWL_LOW = 'Trawl low loader';
+    const TIMBER = 'Timber';
+    const EXCAVATOR = 'Excavator';
+    const WHEEL_LOADER = 'Wheel loader';
+    const TIPPER = 'Tipper';
+    const TRUCK_MIXER = 'Truck mixer';
+    const TRANSPORTER = 'Transporter';
+    const ANCHOR_TRUCK = 'Anchor truck';
+
+    const BACK = 'Back';
+    const LATERAL = 'Lateral';
+    const UPPER = 'Upper';
+
+
     /**
      * @inheritdoc
      */
@@ -107,5 +133,52 @@ class Transport extends ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ]
+        ];
+    }
+
+    public static function getCarCase(){
+
+        return [
+            self::CANOPY => Yii::t('app', 'Canopy'),
+            self::BROADSIDE =>Yii::t('app', 'Broadside'),
+            self::BCC =>Yii::t('app', 'Broadside+Canopy+Conic'),
+            self::BC =>Yii::t('app', 'Broadside+Canopy'),
+            self::REFRIGERATOR =>Yii::t('app', 'Refrigerator'),
+            self::METAL =>Yii::t('app', 'All-metal'),
+            self::BOOTH =>Yii::t('app', 'Booth'),
+            self::VAN =>Yii::t('app', 'Van'),
+            self::ISOTHERMAL =>Yii::t('app', 'Isothermal'),
+            self::TRAWL_PLATFORM =>Yii::t('app', 'Trawl platform'),
+            self::TRAWL_LOW =>Yii::t('app', 'Trawl low loader'),
+            self::TIMBER =>Yii::t('app', 'Timber'),
+            self::EXCAVATOR =>Yii::t('app', 'Excavator'),
+            self::WHEEL_LOADER =>Yii::t('app', 'Wheel loader'),
+            self::TIPPER =>Yii::t('app', 'Tipper'),
+            self::TRUCK_MIXER =>Yii::t('app', 'Truck mixer'),
+            self::TRANSPORTER =>Yii::t('app', 'Transporter'),
+            self::ANCHOR_TRUCK =>Yii::t('app', 'Anchor truck'),
+        ];
+    }
+
+    public static function getCarCaseCharge(){
+
+        return [
+
+            self::BACK =>Yii::t('app', 'Back'),
+            self::LATERAL =>Yii::t('app', 'Lateral'),
+            self::UPPER =>Yii::t('app', 'Upper'),
+
+        ];
     }
 }

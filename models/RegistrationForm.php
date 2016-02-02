@@ -36,7 +36,7 @@ class RegistrationForm extends Model
         return [
             [['status', 'activity', 'city_id', 'surName', 'firstName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_PERSON],
             [['status', 'activity', 'company', 'type_ownership', 'INN', 'city_id', 'address', 'firstName', 'lastName', 'number', 'email', 'password'], 'required', 'on' => User::SCENARIO_COMPANY],
-            [['INN','city_id'], 'integer'],
+            [['INN', 'city_id'], 'integer'],
             [['address'], 'string'],
             [['email'], 'email'],
             [['status', 'activity', 'company', 'type_ownership', 'firstName', 'surName', 'lastName', 'site'], 'string', 'max' => 255],
@@ -70,8 +70,7 @@ class RegistrationForm extends Model
     }
 
 
-    public
-    function attributeLabels()
+    public function attributeLabels()
     {
         return [
             'user_id' => Yii::t('app', 'User ID'),

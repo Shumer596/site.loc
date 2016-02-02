@@ -10,30 +10,6 @@ use yii\console\Exception;
 use yii\db\ActiveQuery;
 use yii\helpers\VarDumper;
 
-///**
-// * This is the model class for table "user".
-// *
-// * @property integer $user_id
-// * @property string $status
-// * @property integer $city
-// * @property string $activity
-// * @property string $company
-// * @property string $type_ownership
-// * @property integer $INN
-// * @property string $address
-// * @property string $firstName
-// * @property string $surName
-// * @property string $lastName
-// * @property string $email
-// * @property string $password
-// * @property string $number
-// * @property string $site
-// * @property string $skype
-// * @property string $created_at
-// * @property string $updated_at
-// * @property string $authKey
-// * @property string $token
-// */
 class ProfileForm extends Model
 {
 
