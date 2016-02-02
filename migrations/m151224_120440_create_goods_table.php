@@ -12,8 +12,8 @@ class m151224_120440_create_goods_table extends Migration
     {
         $this->createTable('goods', [
             'goods_id' => 'pk',
-            'charge_city' => 'string NOT NULL',
-            'discharge_city' => 'string NOT NULL',
+            'charge_city_id' => 'int(11) NOT NULL',
+            'discharge_city_id' => 'int(11) NOT NULL',
             'name' => 'string NOT NULL',
             'tare' => 'string NOT NULL',
             'goods_weight' => 'DOUBLE(3,3) NOT NULL',

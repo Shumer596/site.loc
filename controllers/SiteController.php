@@ -85,8 +85,7 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+            return $this->actionLogin();
         }
         return $this->render('contact', [
             'model' => $model,
@@ -108,7 +107,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->register()) {
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно');
-            return $this->refresh();
+            return $this->actionLogin();
         } else {
             Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации');
             Yii::error('Ошибка при регистрации');

@@ -9,8 +9,8 @@ class m151223_195141_create_transport_table extends Migration
     {
         $this->createTable('transport', [
             'transport_id' => 'pk',
-            'charge_city' => 'string NOT NULL',
-            'discharge_city' => 'string NOT NULL',
+            'charge_city_id' => 'int(11) NOT NULL',
+            'discharge_city_id' => 'int(11) NOT NULL',
             'carcase' => 'string NOT NULL',
             'carcase_charge' => 'string NOT NULL',
             'capacity' => 'DOUBLE(19,4) NOT NULL',

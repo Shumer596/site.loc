@@ -10,7 +10,7 @@ class m151223_120647_create_user_table extends Migration
         $this->createTable('user', [
             'user_id' => 'pk',
             'status' => 'string NOT NULL', //физ или юр лицо
-            'city' => 'int(11) NOT NULL',      //город
+            'city_id' => 'int(11) NOT NULL',      //город
             'activity' => 'string NOT NULL',  //деятельность
             'company' => 'string NOT NULL',   //название компании
             'type_ownership' => 'string NOT NULL',   //форма собственности
@@ -26,8 +26,8 @@ class m151223_120647_create_user_table extends Migration
             'skype' => 'varchar(100) NULL',
             'created_at' => 'timestamp',
             'updated_at' => 'timestamp',
-            'authKey' =>Schema::TYPE_STRING,
-            'token' =>Schema::TYPE_STRING,
+            'authKey' => Schema::TYPE_STRING,
+            'token' => Schema::TYPE_STRING,
         ]);
     }
 
