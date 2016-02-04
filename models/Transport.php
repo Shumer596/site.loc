@@ -90,8 +90,8 @@ class Transport extends ActiveRecord
     {
         return [
             'transport_id' => Yii::t('app', 'Transport ID'),
-            'charge_city_id' => Yii::t('app', 'Charge City ID'),
-            'discharge_city_id' => Yii::t('app', 'Discharge City ID'),
+            'charge_city_id' => Yii::t('app', 'Charge City'),
+            'discharge_city_id' => Yii::t('app', 'Discharge City'),
             'carcase' => Yii::t('app', 'Carcase'),
             'carcase_charge' => Yii::t('app', 'Carcase Charge'),
             'capacity' => Yii::t('app', 'Capacity'),
