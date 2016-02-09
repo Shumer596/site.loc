@@ -59,6 +59,13 @@ class Transport extends ActiveRecord
     const LATERAL = 'Lateral';
     const UPPER = 'Upper';
 
+    const TODAY = 'Today';
+    const ALWAYS = 'Always';
+    const SPECIFY_DATE = 'Specify date';
+
+    const CITY = 'City';
+    const INTERCITY = 'Intercity';
+    const CITY_INTERCITY = 'Intercity and city';
 
     /**
      * @inheritdoc
@@ -147,38 +154,58 @@ class Transport extends ActiveRecord
         ];
     }
 
-    public static function getCarCase(){
+    public static function getCarCase()
+    {
 
         return [
             self::CANOPY => Yii::t('app', 'Canopy'),
-            self::BROADSIDE =>Yii::t('app', 'Broadside'),
-            self::BCC =>Yii::t('app', 'Broadside+Canopy+Conic'),
-            self::BC =>Yii::t('app', 'Broadside+Canopy'),
-            self::REFRIGERATOR =>Yii::t('app', 'Refrigerator'),
-            self::METAL =>Yii::t('app', 'All-metal'),
-            self::BOOTH =>Yii::t('app', 'Booth'),
-            self::VAN =>Yii::t('app', 'Van'),
-            self::ISOTHERMAL =>Yii::t('app', 'Isothermal'),
-            self::TRAWL_PLATFORM =>Yii::t('app', 'Trawl platform'),
-            self::TRAWL_LOW =>Yii::t('app', 'Trawl low loader'),
-            self::TIMBER =>Yii::t('app', 'Timber'),
-            self::EXCAVATOR =>Yii::t('app', 'Excavator'),
-            self::WHEEL_LOADER =>Yii::t('app', 'Wheel loader'),
-            self::TIPPER =>Yii::t('app', 'Tipper'),
-            self::TRUCK_MIXER =>Yii::t('app', 'Truck mixer'),
-            self::TRANSPORTER =>Yii::t('app', 'Transporter'),
-            self::ANCHOR_TRUCK =>Yii::t('app', 'Anchor truck'),
+            self::BROADSIDE => Yii::t('app', 'Broadside'),
+            self::BCC => Yii::t('app', 'Broadside+Canopy+Conic'),
+            self::BC => Yii::t('app', 'Broadside+Canopy'),
+            self::REFRIGERATOR => Yii::t('app', 'Refrigerator'),
+            self::METAL => Yii::t('app', 'All-metal'),
+            self::BOOTH => Yii::t('app', 'Booth'),
+            self::VAN => Yii::t('app', 'Van'),
+            self::ISOTHERMAL => Yii::t('app', 'Isothermal'),
+            self::TRAWL_PLATFORM => Yii::t('app', 'Trawl platform'),
+            self::TRAWL_LOW => Yii::t('app', 'Trawl low loader'),
+            self::TIMBER => Yii::t('app', 'Timber'),
+            self::EXCAVATOR => Yii::t('app', 'Excavator'),
+            self::WHEEL_LOADER => Yii::t('app', 'Wheel loader'),
+            self::TIPPER => Yii::t('app', 'Tipper'),
+            self::TRUCK_MIXER => Yii::t('app', 'Truck mixer'),
+            self::TRANSPORTER => Yii::t('app', 'Transporter'),
+            self::ANCHOR_TRUCK => Yii::t('app', 'Anchor truck'),
         ];
     }
 
-    public static function getCarCaseCharge(){
+    public static function getCarCaseCharge()
+    {
 
         return [
 
-            self::BACK =>Yii::t('app', 'Back'),
-            self::LATERAL =>Yii::t('app', 'Lateral'),
-            self::UPPER =>Yii::t('app', 'Upper'),
-
+            self::BACK => Yii::t('app', 'Back'),
+            self::LATERAL => Yii::t('app', 'Lateral'),
+            self::UPPER => Yii::t('app', 'Upper'),
         ];
     }
+
+    public static function getStatus()
+    {
+        return [
+            self::TODAY => Yii::t('app', 'Today'),
+            self::ALWAYS => Yii::t('app', 'Always'),
+            self::SPECIFY_DATE => Yii::t('app', 'Specify the date'),
+        ];
+    }
+
+    public static function getPrefer()
+    {
+        return [
+            self::CITY => Yii::t('app', 'Only in city'),
+            self::INTERCITY => Yii::t('app', 'Only in intercity'),
+            self::CITY_INTERCITY => Yii::t('app', 'In intercity and in city'),
+        ];
+    }
+
 }

@@ -4,12 +4,14 @@ use app\models\Transport;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\jui\AutoComplete;
+use yii\jui\DatePicker;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Transport */
 /* @var $form yii\widgets\ActiveForm */
+$this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css');
 ?>
 
 <div class="transport-form">
@@ -68,21 +70,41 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'carcase_charge')->dropDownList(Transport::getCarCaseCharge(), [
         'prompt' => Yii::t('app', 'Select the carcase'),
-        'Selected' => 'any']) ?>
+        'value' => 'any']) ?>
 
     <?= $form->field($model, 'capacity')->textInput() ?>
 
     <?= $form->field($model, 'size')->textInput() ?>
     <br/>
     <h4><?= Yii::t('app', 'Time') ?></h4>
-    <?= $form->field($model, 'status_charge')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status_charge')->dropDownList($model->getStatus(), [
+        'prompt' => Yii::t('app', 'Select the carcase')]) ?>
 
-    <?= $form->field($model, 'charge_start')->textInput() ?>
+    <?= $form->field($model, 'charge_start')->widget(
+        DatePicker::className(),
+        [
+            'dateFormat' => 'dd-MM-yyyy',
+            'options' =>
+                [
+                    'class' => 'form-control',
+                ]
+        ]
+    ) ?>
 
-    <?= $form->field($model, 'charge_end')->textInput() ?>
+    <?= $form->field($model, 'charge_end')->widget(
+        DatePicker::className(),
+        [
+            'dateFormat' => 'dd-MM-yyyy',
+            'options' =>
+                [
+                    'class' => 'form-control',
+                ]
+        ]
+    ) ?>
     <br/>
     <h4><?= Yii::t('app', 'Work') ?></h4>
-    <?= $form->field($model, 'work_preferences')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'work_preferences')->dropDownList($model->getPrefer(), [
+        'prompt' => Yii::t('app', 'Select prefer')]) ?>
     <br/>
     <h4><?= Yii::t('app', 'Payment') ?></h4>
     <?= $form->field($model, 'city_rate')->textInput() ?>
@@ -92,13 +114,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'passage_rate')->textInput() ?>
     <br/>
     <h5><?= Yii::t('app', 'Ext. information') ?></h5>
-    <?= $form->field($model, 'info')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'info')->textarea(['rows' => 4]) ?>
     <br/>
     <h5><?= Yii::t('app', 'Placement period') ?></h5>
     <?= $form->field($model, 'term')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Add') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

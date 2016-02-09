@@ -1,7 +1,10 @@
 <?php
 
+use app\models\City;
+use app\models\Transport;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\VarDumper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TransportSearch */
@@ -9,6 +12,7 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Transports');
 $this->params['breadcrumbs'][] = $this->title;
+VarDumper::dump($searchModel);
 ?>
 <div class="transport-index">
 
@@ -30,20 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'discharge_city_id',
             'carcase',
             'carcase_charge',
-            // 'capacity',
-            // 'size',
-            // 'status_charge',
-            // 'charge_start',
-            // 'charge_end',
-            // 'work_preferences',
-            // 'city_rate',
-            // 'intercity_rate',
-            // 'passage_rate',
-            // 'info:ntext',
-            // 'term',
-            // 'created_at',
-            // 'updated_at',
-            // 'user_id',
+             'capacity',
+             'size',
+             'status_charge',
+             'charge_start',
+             'charge_end',
+             'work_preferences',
+             'city_rate',
+             'intercity_rate',
+             'passage_rate',
+             'info:ntext',
+             'term',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
