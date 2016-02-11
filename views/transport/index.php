@@ -10,7 +10,7 @@ use yii\helpers\VarDumper;
 
 $this->title = Yii::t('app', 'Transports');
 $this->params['breadcrumbs'][] = $this->title;
-//VarDumper::dump($searchModel);
+VarDumper::dump($dataProvider->getModels());
 ?>
 <div class="transport-index">
 
