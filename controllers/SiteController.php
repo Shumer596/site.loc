@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\City;
 use app\models\RegistrationForm;
+use app\models\TransportSearch;
 use app\models\User;
 use Yii;
 use yii\base\ErrorException;
@@ -55,7 +56,14 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+//        return $this->render('index');
+        $searchModel = new TransportSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     public function actionLogin()

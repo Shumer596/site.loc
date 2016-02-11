@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Transport;
+use yii\bootstrap\BootstrapAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\jui\AutoComplete;
@@ -11,7 +12,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Transport */
 /* @var $form yii\widgets\ActiveForm */
-$this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css');
+$this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css',['depends' => [BootstrapAsset::className()]]);
 ?>
 
 <div class="transport-form">
@@ -83,7 +84,7 @@ $this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css');
     <?= $form->field($model, 'charge_start')->widget(
         DatePicker::className(),
         [
-            'dateFormat' => 'dd-MM-yyyy',
+            'dateFormat' => 'yyyy-dd-MM',
             'options' =>
                 [
                     'class' => 'form-control',
@@ -94,9 +95,10 @@ $this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css');
     <?= $form->field($model, 'charge_end')->widget(
         DatePicker::className(),
         [
-            'dateFormat' => 'dd-MM-yyyy',
+            'dateFormat' => 'yyyy-dd-MM',
             'options' =>
                 [
+                    'id'=>'charge_end',
                     'class' => 'form-control',
                 ]
         ]

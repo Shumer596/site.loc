@@ -1,7 +1,5 @@
 <?php
 
-use app\models\City;
-use app\models\Transport;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\VarDumper;
@@ -12,7 +10,7 @@ use yii\helpers\VarDumper;
 
 $this->title = Yii::t('app', 'Transports');
 $this->params['breadcrumbs'][] = $this->title;
-VarDumper::dump($searchModel);
+//VarDumper::dump($searchModel);
 ?>
 <div class="transport-index">
 
@@ -20,7 +18,7 @@ VarDumper::dump($searchModel);
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Transport'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Add Transport'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,24 +26,22 @@ VarDumper::dump($searchModel);
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'transport_id',
             'charge_city_id',
             'discharge_city_id',
             'carcase',
             'carcase_charge',
-             'capacity',
-             'size',
-             'status_charge',
-             'charge_start',
-             'charge_end',
-             'work_preferences',
-             'city_rate',
-             'intercity_rate',
-             'passage_rate',
-             'info:ntext',
-             'term',
-
+            'capacity',
+            'size',
+            'status_charge',
+            'charge_start',
+            'charge_end',
+            'work_preferences',
+            'city_rate',
+            'intercity_rate',
+//            'passage_rate',
+//            'info:text',
+            'term',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

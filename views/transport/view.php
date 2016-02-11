@@ -1,5 +1,6 @@
 <?php
 
+use app\models\City;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -29,8 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'transport_id',
-            'charge_city_id',
-            'discharge_city_id',
+            [
+                'label' => 'Charge city',
+                'value' => City::findById($model->charge_city_id)
+            ],
+            [
+                'label' => 'Discharge city',
+                'value' => City::findById($model->discharge_city_id)
+            ],
             'carcase',
             'carcase_charge',
             'capacity',
@@ -42,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'city_rate',
             'intercity_rate',
             'passage_rate',
-            'info:ntext',
+            'info:text',
             'term',
             'created_at',
             'updated_at',
