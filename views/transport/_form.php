@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Transport */
 /* @var $form yii\widgets\ActiveForm */
-$this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css',['depends' => [BootstrapAsset::className()]]);
+$this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css', ['depends' => [BootstrapAsset::className()]]);
+$this->registerJsFile(Yii::getAlias('@web') . '/js/transport.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="transport-form">
@@ -98,7 +99,6 @@ $this->registerCssFile(Yii::getAlias('@web') . '/css/transport.css',['depends' =
             'dateFormat' => 'yyyy-dd-MM',
             'options' =>
                 [
-                    'id'=>'charge_end',
                     'class' => 'form-control',
                 ]
         ]

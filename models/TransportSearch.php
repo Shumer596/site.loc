@@ -43,6 +43,8 @@ class TransportSearch extends Transport
     public function search($params)
     {
         $query = Transport::find();
+        $query->with('chargeCity');
+        $query->joinWith('chargeCity');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -58,7 +60,7 @@ class TransportSearch extends Transport
 
         $query->andFilterWhere([
             'transport_id' => $this->transport_id,
-            'charge_city_id' => $this->charge_city_id,
+            'city.name' => $this->charge_city_id,
             'discharge_city_id' => $this->discharge_city_id,
             'capacity' => $this->capacity,
             'size' => $this->size,
@@ -73,7 +75,8 @@ class TransportSearch extends Transport
             'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'carcase', $this->carcase])
+        $query
+            ->andFilterWhere(['like', 'carcase', $this->carcase])
             ->andFilterWhere(['like', 'carcase_charge', $this->carcase_charge])
             ->andFilterWhere(['like', 'status_charge', $this->status_charge])
             ->andFilterWhere(['like', 'work_preferences', $this->work_preferences])

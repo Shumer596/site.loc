@@ -8,7 +8,11 @@
     width: 200px;
 }
 .form-control{
-    /*font-size: 14px;*/
-    /*width: 200px;*/
-    /*height: 26px;*/
+
+}
+.field-transport-charge_start{
+    display: none;
+}
+.field-transport-charge_end{
+    display: none;
 }

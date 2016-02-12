@@ -10,7 +10,7 @@ use yii\helpers\VarDumper;
 
 $this->title = Yii::t('app', 'Transports');
 $this->params['breadcrumbs'][] = $this->title;
-VarDumper::dump($dataProvider->getModels());
+//VarDumper::dump($dataProvider->getModels());
 ?>
 <div class="transport-index">
 
@@ -27,8 +27,14 @@ VarDumper::dump($dataProvider->getModels());
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'transport_id',
-            'charge_city_id',
-            'discharge_city_id',
+            [
+              'label'=> 'Charge City',
+              'value'=> 'chargeCity.name',
+            ],
+            [
+                'label'=> 'Discharge City',
+                'value'=> 'dischargeCity.name',
+            ],
             'carcase',
             'carcase_charge',
             'capacity',
