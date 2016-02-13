@@ -5,22 +5,27 @@
 /* @var $searchModel app\models\TransportSearch */
 
 use yii\grid\GridView;
-use yii\helpers\Html;
+use yii\widgets\ListView;
 
-$this->title = 'My Yii Application';
+$this->title = 'INGRUZ.RU';
 ?>
 
 <div class="transport-index">
     <h3>Transport index</h3>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
-//            ['class' => 'yii\grid\SerialColumn'],
-
+            ['class' => 'yii\grid\SerialColumn'],
 //            'transport_id',
-            'charge_city_id',
-            'discharge_city_id',
+            [
+                'label'=> 'Charge City',
+                'value'=> 'chargeCity.name',
+            ],
+            [
+                'label'=> 'Discharge City',
+                'value'=> 'dischargeCity.name',
+            ],
             'carcase',
             'carcase_charge',
             'capacity',
