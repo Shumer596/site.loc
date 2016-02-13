@@ -85,7 +85,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/transport.js', ['depends' => 
     <?= $form->field($model, 'charge_start')->widget(
         DatePicker::className(),
         [
-            'dateFormat' => 'yyyy-dd-MM',
+            'dateFormat' => 'yyyy-MM-dd',
             'options' =>
                 [
                     'class' => 'form-control',
@@ -96,7 +96,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/transport.js', ['depends' => 
     <?= $form->field($model, 'charge_end')->widget(
         DatePicker::className(),
         [
-            'dateFormat' => 'yyyy-dd-MM',
+            'dateFormat' => 'yyyy-MM-dd',
             'options' =>
                 [
                     'class' => 'form-control',
