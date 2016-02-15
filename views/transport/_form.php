@@ -79,7 +79,7 @@ $this->registerJsFile(Yii::getAlias('@web') . '/js/transport.js', ['depends' => 
     <?= $form->field($model, 'size')->textInput() ?>
     <br/>
     <h4><?= Yii::t('app', 'Time') ?></h4>
-    <?= $form->field($model, 'status_charge')->dropDownList($model->getStatus(), [
+    <?= $form->field($model, 'status_charge')->dropDownList(Transport::getStatus(), [
         'prompt' => Yii::t('app', 'Select the carcase')]) ?>
 
     <?= $form->field($model, 'charge_start')->widget(

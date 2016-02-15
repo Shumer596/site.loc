@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "goods".
@@ -35,8 +38,11 @@ use Yii;
  * @property City $dischargeCity
  * @property User $user
  */
-class Goods extends \yii\db\ActiveRecord
+class Goods extends ActiveRecord
 {
+    const TARE = 'Tare';
+    const BOX = 'Box';
+
     /**
      * @inheritdoc
      */
@@ -53,7 +59,7 @@ class Goods extends \yii\db\ActiveRecord
         return [
             [['charge_city_id', 'discharge_city_id', 'name', 'tare', 'goods_weight', 'goods_size', 'carcase', 'carcase_charge', 'capacity', 'size', 'status_charge', 'term'], 'required'],
             [['charge_city_id', 'discharge_city_id', 'term', 'user_id'], 'integer'],
-            [['goods_weight', 'goods_size', 'capacity', 'size', 'city_rate', 'intercity_rate', 'passage_rate'], 'number'],
+            [['goods_weight', 'goods_size', 'capacity', 'size', 'city_rate', 'intercity_rate', 'passage_rate'], 'integer'],
             [['charge_start', 'charge_end', 'created_at', 'updated_at'], 'safe'],
             [['info'], 'string'],
             [['name', 'tare', 'carcase', 'carcase_charge', 'work_preferences', 'status_charge'], 'string', 'max' => 255]
@@ -67,8 +73,8 @@ class Goods extends \yii\db\ActiveRecord
     {
         return [
             'goods_id' => Yii::t('app', 'Goods ID'),
-            'charge_city_id' => Yii::t('app', 'Charge City ID'),
-            'discharge_city_id' => Yii::t('app', 'Discharge City ID'),
+            'charge_city_id' => Yii::t('app', 'Charge City'),
+            'discharge_city_id' => Yii::t('app', 'Discharge City'),
             'name' => Yii::t('app', 'Name'),
             'tare' => Yii::t('app', 'Tare'),
             'goods_weight' => Yii::t('app', 'Goods Weight'),
@@ -114,5 +120,26 @@ class Goods extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+    }
+
+    public static function getTare()
+    {
+        return
+            [
+                self::BOX => Yii::t('app', 'Box'),
+                self::TARE => Yii::t('app', 'Tare')
+            ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ]
+        ];
     }
 }

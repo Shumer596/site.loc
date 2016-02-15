@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\City;
+use app\models\GoodsSearch;
 use app\models\RegistrationForm;
 use app\models\TransportSearch;
 use app\models\User;
@@ -57,12 +58,19 @@ class SiteController extends Controller
     public function actionIndex()
     {
 //        return $this->render('index');
-        $searchModel = new TransportSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchTransport = new TransportSearch();
+        $dataProviderTransport = $searchTransport->search(Yii::$app->request->queryParams);
+
+
+        $searchGoods = new GoodsSearch();
+        $dataProviderGoods = $searchGoods->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'searchTransport' => $searchTransport,
+            'dataProviderTransport' => $dataProviderTransport,
+            'searchGoods' => $searchGoods,
+            'dataProviderGoods' => $dataProviderGoods,
+
         ]);
     }
 

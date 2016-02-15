@@ -1,8 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel app\models\TransportSearch */
+/* @var $dataProviderTransport yii\data\ActiveDataProvider */
+/* @var $searchTransport app\models\TransportSearch */
+/* @var $dataProviderGoods yii\data\ActiveDataProvider */
+/* @var $searchGoods app\models\TransportSearch */
 
 use yii\grid\GridView;
 use yii\widgets\ListView;
@@ -13,7 +15,7 @@ $this->title = 'INGRUZ.RU';
 <div class="transport-index">
     <h3>Transport index</h3>
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
+        'dataProvider' => $dataProviderTransport,
 //        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -47,6 +49,39 @@ $this->title = 'INGRUZ.RU';
 
 <div class="transport-index">
     <h3>Goods index</h3>
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderGoods,
+//        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'goods_id',
+            'charge_city_id',
+            'discharge_city_id',
+            'name',
+            'tare',
+            'goods_weight',
+            'goods_size',
+            'carcase',
+            'carcase_charge',
+            'capacity',
+            'size',
+            'work_preferences',
+            'status_charge',
+            'charge_start',
+            'charge_end',
+            'city_rate',
+            'intercity_rate',
+            //             'passage_rate',
+            //             'info:ntext',
+            'term',
+            // 'created_at',
+            // 'updated_at',
+            // 'user_id',
+
+//            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>
 
 <div class="transport-index">

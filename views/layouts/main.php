@@ -48,6 +48,11 @@ AppAsset::register($this);
                 'visible' => !Yii::$app->user->isGuest
             ],
             [
+                'label' => 'Goods',
+                'url' => ['/goods/index'],
+                'visible' => !Yii::$app->user->isGuest
+            ],
+            [
                 'label' => 'Profile',
                 'url' => ['/user/profile'],
                 'visible' => !Yii::$app->user->isGuest
