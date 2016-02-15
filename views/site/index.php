@@ -55,9 +55,15 @@ $this->title = 'INGRUZ.RU';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'goods_id',
-            'charge_city_id',
-            'discharge_city_id',
+//            'goods_id',
+            [
+                'label'=> 'Charge City',
+                'value'=> 'chargeCity.name',
+            ],
+            [
+                'label'=> 'Discharge City',
+                'value'=> 'dischargeCity.name',
+            ],
             'name',
             'tare',
             'goods_weight',

@@ -43,6 +43,8 @@ class GoodsSearch extends Goods
     public function search($params)
     {
         $query = Goods::find();
+        $query->with('chargeCity');
+        $query->joinWith('chargeCity');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
