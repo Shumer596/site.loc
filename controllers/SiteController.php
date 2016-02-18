@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\City;
 use app\models\GoodsSearch;
 use app\models\RegistrationForm;
+use app\models\Tender;
+use app\models\TenderSearch;
 use app\models\TransportSearch;
 use app\models\User;
 use Yii;
@@ -57,19 +59,23 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-//        return $this->render('index');
+        //        return $this->render('index');
         $searchTransport = new TransportSearch();
         $dataProviderTransport = $searchTransport->search(Yii::$app->request->queryParams);
 
-
         $searchGoods = new GoodsSearch();
         $dataProviderGoods = $searchGoods->search(Yii::$app->request->queryParams);
+
+        $searchTender = new TenderSearch();
+        $dataProviderTender = $searchTender->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchTransport' => $searchTransport,
             'dataProviderTransport' => $dataProviderTransport,
             'searchGoods' => $searchGoods,
             'dataProviderGoods' => $dataProviderGoods,
+            'searchTender' => $searchTender,
+            'dataProviderTender' => $dataProviderTender,
 
         ]);
     }

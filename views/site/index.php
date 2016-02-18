@@ -5,6 +5,7 @@
 /* @var $searchTransport app\models\TransportSearch */
 /* @var $dataProviderGoods yii\data\ActiveDataProvider */
 /* @var $searchGoods app\models\TransportSearch */
+/* @var $dataProviderTender yii\data\ActiveDataProvider */
 
 use yii\grid\GridView;
 use yii\widgets\ListView;
@@ -16,17 +17,17 @@ $this->title = 'INGRUZ.RU';
     <h3>Transport index</h3>
     <?= GridView::widget([
         'dataProvider' => $dataProviderTransport,
-//        'filterModel' => $searchModel,
+        //        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-//            'transport_id',
+            //            'transport_id',
             [
-                'label'=> 'Charge City',
-                'value'=> 'chargeCity.name',
+                'label' => 'Charge City',
+                'value' => 'chargeCity.name',
             ],
             [
-                'label'=> 'Discharge City',
-                'value'=> 'dischargeCity.name',
+                'label' => 'Discharge City',
+                'value' => 'dischargeCity.name',
             ],
             'carcase',
             'carcase_charge',
@@ -38,11 +39,11 @@ $this->title = 'INGRUZ.RU';
             'work_preferences',
             'city_rate',
             'intercity_rate',
-//            'passage_rate',
-//            'info:text',
+            //            'passage_rate',
+            //            'info:text',
             'term',
 
-//            ['class' => 'yii\grid\ActionColumn'],
+            //            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
@@ -51,18 +52,18 @@ $this->title = 'INGRUZ.RU';
     <h3>Goods index</h3>
     <?= GridView::widget([
         'dataProvider' => $dataProviderGoods,
-//        'filterModel' => $searchModel,
+        //        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'goods_id',
+            //            'goods_id',
             [
-                'label'=> 'Charge City',
-                'value'=> 'chargeCity.name',
+                'label' => 'Charge City',
+                'value' => 'chargeCity.name',
             ],
             [
-                'label'=> 'Discharge City',
-                'value'=> 'dischargeCity.name',
+                'label' => 'Discharge City',
+                'value' => 'dischargeCity.name',
             ],
             'name',
             'tare',
@@ -85,11 +86,31 @@ $this->title = 'INGRUZ.RU';
             // 'updated_at',
             // 'user_id',
 
-//            ['class' => 'yii\grid\ActionColumn'],
+            //            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
 
 <div class="transport-index">
     <h3>Tender index</h3>
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderTender,
+        //        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'tender_id',
+            'name',
+            'info:ntext',
+            //            'file:ntext',
+            'date_start',
+            'date_end',
+            'price',
+            // 'created_at',
+            // 'updated_at',
+            // 'user_id',
+
+            //            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>

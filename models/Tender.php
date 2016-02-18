@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "tender".
@@ -20,7 +23,7 @@ use Yii;
  *
  * @property User $user
  */
-class Tender extends \yii\db\ActiveRecord
+class Tender extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -36,7 +39,7 @@ class Tender extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'info', 'file'], 'required'],
+            [['name', 'info'], 'required'],
             [['info', 'file'], 'string'],
             [['date_start', 'date_end', 'created_at', 'updated_at'], 'safe'],
             [['price'], 'number'],
@@ -70,5 +73,17 @@ class Tender extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ]
+        ];
     }
 }

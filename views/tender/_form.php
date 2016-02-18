@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -16,19 +17,33 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'info')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'file')->fileInput(
+    ) ?>
 
-    <?= $form->field($model, 'date_start')->textInput() ?>
+    <?= $form->field($model, 'date_start')->widget(
+        DatePicker::className(),
+        [
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' =>
+                [
+                    'class' => 'form-control',
+                ]
+        ]
+    ) ?>
 
-    <?= $form->field($model, 'date_end')->textInput() ?>
+    <?= $form->field($model, 'date_end')->widget(
+        DatePicker::className(),
+        [
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' =>
+                [
+                    'class' => 'form-control',
+                ]
+        ]
+    ) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
