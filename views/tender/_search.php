@@ -25,9 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date_start') ?>
 
-    <?php // echo $form->field($model, 'date_end') ?>
+    <?php  echo $form->field($model, 'date_end') ?>
 
-    <?php // echo $form->field($model, 'price') ?>
+    <?php  echo $form->field($model, 'price') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
