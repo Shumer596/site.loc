@@ -44,6 +44,7 @@ AppAsset::register($this);
             ],
             [
                 'label' => 'Transport',
+                'class'=> 'sad',
                 'url' => ['/transport/index'],
                 'visible' => !Yii::$app->user->isGuest
             ],

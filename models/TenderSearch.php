@@ -47,7 +47,7 @@ class TenderSearch extends Tender
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pagesize' => 2,
+//                'pagesize' => 2,
             ],
         ]);
 
