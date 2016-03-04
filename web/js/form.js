@@ -1,11 +1,11 @@
 $(document).ready(init);
 
 function init() {
-    $('#transport-status_charge').bind('change', desc);
+    $('#registrationform-status').bind('change', desc);
 }
 
 function desc() {
-    var op = $('#transport-status_charge').val();
+    var op = $('#registrationform-status').val();
     switch (op) {
         case 'Person':
             $("#Individual_form").show();
